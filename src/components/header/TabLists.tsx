@@ -4,10 +4,14 @@ import React from "react";
 function TabLists() {
   return (
     <>
-      <Tabs variant="soft-rounded" colorScheme=''>
+      <Tabs variant="soft-rounded">
         <TabList>
-          <Tab color={'white'}>Tab 1</Tab>
-          <Tab>Tab 2</Tab>
+          <Tab color={"white"} _selected={{ color: "#223040", bg: "white" }}>
+            Tab 1
+          </Tab>
+          <Tab color={"white"} _selected={{ color: "#223040", bg: "white" }}>
+            Tab 2
+          </Tab>
         </TabList>
       </Tabs>
     </>
