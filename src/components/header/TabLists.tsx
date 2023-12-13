@@ -4,9 +4,9 @@ import React from "react";
 function TabLists() {
   return (
     <>
-      <Tabs variant="soft-rounded" colorScheme="green">
+      <Tabs variant="soft-rounded" colorScheme=''>
         <TabList>
-          <Tab>Tab 1</Tab>
+          <Tab color={'white'}>Tab 1</Tab>
           <Tab>Tab 2</Tab>
         </TabList>
       </Tabs>

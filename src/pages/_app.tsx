@@ -11,11 +11,16 @@ const inter = Inter({
 });
 export default function App({ Component, pageProps, router }: AppProps) {
   const { pathname = "" } = router;
+
   return (
     <ChakraProvider>
-      <main className={`${inter.className} `}>
-        {pathname !== "/" && <Header />}
-        <Component router={router} {...pageProps} />
+      <main
+        className={`${inter.className} bg-[#223040] flex items-center align-middle w-full justify-center`}
+      >
+        <div className="max-w-[1224px]">
+          {pathname !== "/" && <Header />}
+          <Component router={router} {...pageProps} />
+        </div>
       </main>
     </ChakraProvider>
   );
