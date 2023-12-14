@@ -10,8 +10,8 @@ function AddBuddyTrip({ onBack }: { onBack: () => void }) {
           src={BackButton}
           alt="BackButton"
           onClick={onBack}
-          width={36}
-          height={24}
+          width={34}
+          height={20}
           className="mr-3"
         />
         <h1 className="text-3xl font-bold">Add Buddy Trip</h1>
