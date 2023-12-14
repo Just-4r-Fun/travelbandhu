@@ -6,27 +6,7 @@ import FeedPost from "@/components/feedPost";
 import CustomModal from "@/components/common/Modal";
 import CreatePost from "@/components/feedPost/createPost";
 import LoyaltyIcon from "@/assets/svg/Loyalty";
-<<<<<<< Updated upstream
 import BaseLayout from "@/components/BaseLayout";
-
-interface IOwnProps {
-  posts: Post[];
-}
-
-const Feeds: React.FC<IOwnProps> = ({ posts = postsMock }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const heading = (
-    <div className="font-medium flex flex-row gap-x-2 items-center text-lg">
-      <MdOutlinePostAdd />
-      Create a post
-    </div>
-  );
-
-  const addPost = () => {
-    onClose();
-  };
-=======
 import {getPostData, setPostData} from "../firebase"
 
 
@@ -128,7 +108,6 @@ const Feeds = () => {
 
   const heading = <div className="font-medium flex flex-row gap-x-2 items-center text-lg"><MdOutlinePostAdd />Create a post</div>
 
->>>>>>> Stashed changes
 
   return (
     <BaseLayout>
@@ -152,38 +131,6 @@ const Feeds = () => {
               _hover={{
                 background: "var(--primary-color-light)",
               }}
-<<<<<<< Updated upstream
-              style={{ borderRadius: "20px" }}
-              color={"white"}
-              background={"rgb(52,53,65)"}
-              onClick={onOpen}
-            >
-              Create a post
-            </Button>
-          </Stack>
-          <CustomModal
-            heading={heading}
-            isOpen={isOpen}
-            onClose={onClose}
-            content={<CreatePost />}
-            footerCTA={
-              <Button
-                style={{ marginRight: 0 }}
-                colorScheme="blue"
-                mr={3}
-                onClick={addPost}
-              >
-                Create post
-              </Button>
-            }
-          />
-        </div>
-        <div className="flex flex-row gap-4">
-          <div>
-            {posts.map((post, index) => {
-              return <FeedPost {...post} />;
-            })}
-=======
                 color={"white"} background={'rgb(52,53,65)'} onClick={onOpen}>Create a post</Button>
             </Stack>
             <CustomModal
@@ -209,10 +156,8 @@ const Feeds = () => {
                 return <FeedPost {...post} key={post.postDescription + index + ""} />
               })}
             </div>
->>>>>>> Stashed changes
           </div>
         </div>
-      </div>
     </BaseLayout>
   );
 };

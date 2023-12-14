@@ -31,7 +31,7 @@ const CreatePost:React.FC<IOwnProps> = ({handleImageUpload,  handleAreaChange, h
     }
 
     return (
-        <div>
+        <div style={{height: '600px', overflow: 'scroll'}}>
             <UploadImage setImagesValue={handleImageUpload} />
             <div className="mt-4">
                 <div className="text-sm font-bold">Add what areas you covered through out the trip?</div>
