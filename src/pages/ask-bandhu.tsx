@@ -1,5 +1,7 @@
 import BaseLayout from "@/components/BaseLayout";
 import TripPlanner from "@/components/TripPlanner/TripPlanner";
+import { useAppSelector } from "@/redux/hooks";
+import { getTripPlanTripDescription } from "@/redux/manager/tripPlan";
 import {
   Box,
   Button,
@@ -11,6 +13,8 @@ import {
 import React from "react";
 
 function AskBandu() {
+  const planTripDescription = useAppSelector(getTripPlanTripDescription);
+
   return (
     <BaseLayout className="pt-6">
       <div className="w-full min-h-fit">
@@ -18,10 +22,7 @@ function AskBandu() {
           <Card width={"50%"} background="aliceblue">
             <CardBody>
               <Text pt="2" fontSize="medium">
-                I want to visit Goa in the month of December, I live in
-                Bengalore, We are a group of 3 people, we want to explore south
-                Goa, suggest me few places near south Goa and help me plan my
-                trip
+               {planTripDescription}
               </Text>
             </CardBody>
           </Card>

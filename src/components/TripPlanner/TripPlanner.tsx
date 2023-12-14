@@ -21,6 +21,8 @@ import SearchPlaces from "./SearchPlaces";
 import GetLocationComponent from "./GetLocationComponent";
 import GetDateComponent from "./GetDateComponent";
 import GetTravellerDetails from "./GetTravellerDetails";
+import { useAppSelector } from "@/redux/hooks";
+import { getTripPlanTripDescription } from "@/redux/manager/tripPlan";
 
 const steps = [
   {
@@ -41,6 +43,12 @@ function TripPlanner() {
     index: 0,
     count: steps.length,
   });
+
+  const planTripDescription = useAppSelector(getTripPlanTripDescription)
+
+
+  console.log(" planDescription ", planTripDescription);
+  
 
   return (
     <div className="w-full">
