@@ -18,9 +18,9 @@ export const ROUTES = [
     route: "/feeds",
   },
   {
-    name: "Vlogs",
+    name: "Buddy",
     icon: Vlogs,
-    route: "/vlogs",
+    route: "/buddy",
   },
   {
     name: "AI Gallery",
