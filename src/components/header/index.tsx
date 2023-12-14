@@ -17,18 +17,17 @@ function Header() {
       className="w-full min-w-full pt-3"
       as={"div"}
     >
-      <Box display={"flex"} gap={"30px"} width={"217px"}>
+      <Box display={"flex"} gap={"30px"} width={"260px"}>
         <Logo />
         <Text
           css={{
             color: " #FDFDFD",
             textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-            fontFamily: "Krub",
             fontSize: "34px",
             fontStyle: "normal",
             fontWeight: 700,
             lineHeight: "normal",
-            width: "125px",
+            width: "180px",
           }}
         >
           Travel Bandhu
