@@ -13,7 +13,7 @@ interface IOwnProps {
 const CustomModal:React.FC<IOwnProps> = ({heading, isOpen, onClose, content, footerCTA}) => {
 
     return (
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal isOpen={isOpen} onClose={onClose} size={'lg'}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{heading}</ModalHeader>

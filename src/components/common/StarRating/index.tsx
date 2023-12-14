@@ -4,7 +4,7 @@ import { Radio, HStack, Box } from "@chakra-ui/react";
 
 interface IOwnProps {
     rating:  number;
-    setRating?: (rating: string) =>  void;
+    setRating?: (rating: number) =>  void;
     count?: number;
     size?: number
 }
@@ -22,6 +22,7 @@ const StarRating: React.FC<IOwnProps> = ({ rating, setRating, count, size }) => 
             color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
             onMouseEnter={() => setHover(ratingValue)}
             onMouseLeave={() => setHover(null)}
+            onClick={() => setRating && setRating(ratingValue)}
           >
             <FaStar
               cursor={"pointer"}
