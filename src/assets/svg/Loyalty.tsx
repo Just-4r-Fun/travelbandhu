@@ -5,7 +5,7 @@ import { FaMedal } from 'react-icons/fa'; // You can use any other icon from the
 const LoyaltyIcon: React.FC<{value: number}> = ({ value }) => {
   return (
     <Flex alignItems="center">
-      <Icon as={FaMedal} boxSize={6} color="gold" />
+      <Icon as={FaMedal} boxSize={4} color="#FF9933" />
       <Text ml={2} fontWeight="bold" fontSize="md" color="white">
         {value}
       </Text>

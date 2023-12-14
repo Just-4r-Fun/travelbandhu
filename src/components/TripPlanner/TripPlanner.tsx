@@ -20,6 +20,7 @@ import {
 import SearchPlaces from "./SearchPlaces";
 import GetLocationComponent from "./GetLocationComponent";
 import GetDateComponent from "./GetDateComponent";
+import GetTravellerDetails from "./GetTravellerDetails";
 
 const steps = [
   {
@@ -27,10 +28,11 @@ const steps = [
     description: "",
     ChildComponent: GetLocationComponent,
   },
-  { title: "Date & Time", description: "",   ChildComponent:  GetDateComponent },
+  { title: "Date & Time", description: "", ChildComponent: GetDateComponent },
   {
     title: "PLEASE TELL ME SOME DETAILS ABOUT YOUR TRIP",
     description: "",
+    ChildComponent: GetTravellerDetails,
   },
 ];
 
@@ -41,20 +43,20 @@ function TripPlanner() {
   });
 
   return (
-    <div className="w-full flex">
+    <div className="w-full">
       <Stepper
         index={activeStep}
         orientation="vertical"
-        height="400px"
+        height="100%"
         gap="0"
         className="m-0"
       >
         {steps.map((step, index) => {
           const { ChildComponent } = step;
 
-          const onCompleted = ()=>{
-            setActiveStep(activeStep+1);
-          }
+          const onCompleted = () => {
+            setActiveStep(activeStep + 1);
+          };
 
           return (
             <Step key={index}>
@@ -77,6 +79,19 @@ function TripPlanner() {
           );
         })}
       </Stepper>
+
+      <div className="mt-16">
+        Hooray! Here is what we think you should plan your trip
+      </div>
+
+      <div className="mt-16">
+        Booking buttons
+        <div className="flex gap-4 mt-4">
+          <Button>Book flight tickets</Button>
+          <Button>Book flight tickets</Button>
+          <Button>Book flight tickets</Button>
+        </div>
+      </div>
     </div>
   );
 }
