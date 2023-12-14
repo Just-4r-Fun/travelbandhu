@@ -3,9 +3,24 @@ import { handleAskBundhuSearchSubmit } from "@/utils";
 import { Button, Card, List, ListItem, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import SearchPlaces from "./SearchPlaces";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import {
+  getTripPlanTripForm,
+  setTripPlanDetails,
+} from "@/redux/manager/tripPlan";
 
 function GetLocationComponent({ onCompleted }) {
-  const onLocationFilled = () => {
+  const dispatch = useAppDispatch();
+  const tripForm = useAppSelector(getTripPlanTripForm) || {};
+  const onLocationFilled = (placeName: string) => {
+    dispatch(
+      setTripPlanDetails({
+        form: {
+          ...tripForm,
+          startingLocation: placeName,
+        },
+      })
+    );
     onCompleted();
   };
 
