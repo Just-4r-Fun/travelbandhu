@@ -6,8 +6,12 @@ import { IoMdArrowDropdownCircle } from "react-icons/io";
 import Testimonial from "../common/Testimonial"
 import { FaRegComments } from "react-icons/fa6";
 
+<<<<<<< Updated upstream
 
 const FeedPost: React.FC<Post> = ({postId, postDescription, images, areasVisited, commuteOpted, hotelsBooked, overallRating, shareUrls, hashtags}) => {
+=======
+const FeedPost: React.FC<Post> = ({postId, postDescription, images, areasVisited, commuteOpted, hotelsBooked, overallRating, shareUrls, hashtags, ctFeedback}) => {
+>>>>>>> Stashed changes
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <div className="flex flex-col border-2 rounded-lg pb-4 mb-4" style={{ borderRadius: "20px" }}>
@@ -24,6 +28,7 @@ const FeedPost: React.FC<Post> = ({postId, postDescription, images, areasVisited
                         <StarRating rating={overallRating} size={20}  />
                     </div>
                     <div className="flex flex-row gap-x-2">
+<<<<<<< Updated upstream
                         {hashtags.map((hashtag, i) => {return <Tag> <div className="text-xs cursor-pointer">#{hashtag}</div></Tag>})}
                     </div>
                     <div>
@@ -32,6 +37,14 @@ const FeedPost: React.FC<Post> = ({postId, postDescription, images, areasVisited
                         </div>
                         <Testimonial message="Booking through the Cleartrip app is a breeze! With its user-friendly design, transparent pricing, and real-time updates, it offers a seamless and secure experience. From flights to hotels, Cleartrip simplifies travel planning, ensuring a hassle-free journey every time."/>
                     </div>
+=======
+                    {hashtags.map((hashtag, i) => {return <Tag> <div className="text-xs cursor-pointer">#{hashtag}</div></Tag>})}</div>
+                    <>
+                    <div className="text-xs font-bold -mb-6 flex flex-row gap-x-2" style={{color: 'rgb(52,53,65)'}}><FaRegComments /> A word for Cleartrip</div>
+                    <Testimonial
+                        message={ctFeedback}
+                    /></>
+>>>>>>> Stashed changes
                 </div>
             </div>
             <div className="flex flex-col gap-y-4 -mt-8 pl-4 pr-4 text-sm">

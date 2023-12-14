@@ -1,8 +1,12 @@
 // ChipInput.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Flex, Input, Text } from '@chakra-ui/react';
 
-const ChipInput = () => {
+interface IOwnProps {
+  onChange: (values: any[]) => void
+}
+
+const ChipInput: React.FC<IOwnProps> = ({onChange}) => {
   const [chips, setChips] = useState([]);
   const [inputValue, setInputValue] = useState('');
 
@@ -20,6 +24,11 @@ const ChipInput = () => {
     setChips(newChips);
   };
 
+  useEffect(() => {
+    onChange(chips)
+  }, [chips])
+
+  
   return (
     <div>
       <Flex flexWrap="wrap" alignItems="center">

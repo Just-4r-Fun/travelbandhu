@@ -16,7 +16,7 @@ function BuddyContainer({ onAddBuddy }: { onAddBuddy: () => void }) {
   };
 
   return (
-    <div className="w-full min-h-fit">
+    <div className="w-full min-h-fit h-fit">
       <div className="flex justify-end">
         <Button
           className="!rounded-[14px] border-2"
