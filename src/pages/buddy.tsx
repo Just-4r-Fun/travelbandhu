@@ -12,7 +12,7 @@ function Buddy() {
   };
 
   return (
-    <BaseLayout>
+    <BaseLayout className="min-h-fit h-fit">
       {showAddBuddy ? (
         <AddBuddyTrip onBack={toggleAddBuddy} />
       ) : (
