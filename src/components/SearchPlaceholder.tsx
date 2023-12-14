@@ -6,8 +6,8 @@ import { useRouter } from "next/router";
 import { useAppDispatch } from "@/redux/hooks";
 import { setTripPlanDetails } from "@/redux/manager/tripPlan";
 
-function SearchPlaceholder({ text = "Ask Bandhu" }) {
-  const [searchValue, setSearchValue] = useState("");
+function SearchPlaceholder({ text = "Ask Bandhu", customSearchValue = '' }) {
+  const [searchValue, setSearchValue] = useState(customSearchValue);
   const dispatch = useAppDispatch();
 
   const router = useRouter();

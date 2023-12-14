@@ -1,4 +1,5 @@
 import BaseLayout from "@/components/BaseLayout";
+import SearchPlaceholder from "@/components/SearchPlaceholder";
 import TripPlanner from "@/components/TripPlanner/TripPlanner";
 import { useAppSelector } from "@/redux/hooks";
 import { getTripPlanTripDescription } from "@/redux/manager/tripPlan";
@@ -11,7 +12,7 @@ import {
   Spinner,
   Text,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 function AskBandu() {
   const planTripDescription = useAppSelector(getTripPlanTripDescription);
@@ -42,6 +43,9 @@ function AskBandu() {
     APICall();
   }, [])
 
+  const [enableEditTripDescription, setEnableEditTripDescription] =
+    useState(false);
+
   return (
     <BaseLayout className="pt-6">
       <div className="w-full min-h-fit">
@@ -51,7 +55,7 @@ function AskBandu() {
           }}>
             <CardBody>
               <Text fontSize="medium">
-               {planTripDescription}
+                {planTripDescription}
               </Text>
             </CardBody>
           </Card>
@@ -66,10 +70,16 @@ function AskBandu() {
               alignItems: 'center',
               justifyContent: 'center'
             }}>
-              {Object.keys(firstResponse).length > 0 ? firstResponse : <Spinner thickness='4px'  speed='0.65s' emptyColor='gray.200'  color='blue.500' size='xl'/> }
+              {Object.keys(firstResponse).length > 0 ? <>{firstResponse}</> : <Spinner thickness='4px'  speed='0.65s' emptyColor='gray.200'  color='blue.500' size='xl'/> }
             </CardBody>
           </Card>
         </div>
+
+        {enableEditTripDescription && (
+          <div className="m-4  w-full flex justify-end ml-2">
+            <SearchPlaceholder customSearchValue={planTripDescription} />
+          </div>
+        )}
 
         <div>
           <ButtonGroup spacing="6" className="w-full mt-12 flex justify-center">
@@ -87,7 +97,14 @@ function AskBandu() {
               {" "}
               Plan your itinerary
             </Button>
-            <Button variant={"outline"} color="#223040" borderRadius="20px">
+            <Button
+              variant={"outline"}
+              color="#223040"
+              borderRadius="20px"
+              onClick={() => {
+                setEnableEditTripDescription(true);
+              }}
+            >
               Continue to Chat
             </Button>
           </ButtonGroup>

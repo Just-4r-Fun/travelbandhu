@@ -25,7 +25,7 @@ function GetLocationComponent({ onCompleted }) {
   };
 
   return (
-    <div className="mt-4 flex items-center">
+    <div className="mt-4 mb-8 flex items-center">
       <Button
         backgroundColor="#223040"
         variant={"solid"}

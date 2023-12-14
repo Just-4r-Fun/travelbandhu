@@ -30,7 +30,6 @@ const steps = [
     description: "",
     ChildComponent: GetLocationComponent,
   },
-  { title: "Date & Time", description: "", ChildComponent: GetDateComponent },
   {
     title: "PLEASE TELL ME SOME DETAILS ABOUT YOUR TRIP",
     description: "",
