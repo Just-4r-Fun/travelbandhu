@@ -23,7 +23,7 @@ const Feeds: React.FC<IOwnProps> = ({ posts = postsMock }) => {
 
   return (
     <div className="mt-8 h-max">
-      <div className="bg-white h-max p-4 rounded">
+      <div className="bg-white h-max p-4" style={{ borderRadius: "20px"}}>
         <div className="flex flex-col">
           <div className="ml-auto mb-4">
             <Stack spacing={4} direction='row' align='center'>
@@ -31,6 +31,7 @@ const Feeds: React.FC<IOwnProps> = ({ posts = postsMock }) => {
                 _hover={{
                   background: "var(--primary-color-light)",
                 }}
+                style={{ borderRadius: "20px"}}
                 color={"white"} 
                 background={'rgb(52,53,65)'} 
                 onClick={onOpen}
@@ -40,6 +41,7 @@ const Feeds: React.FC<IOwnProps> = ({ posts = postsMock }) => {
               <Button _hover={{
                 background: "var(--primary-color-light)",
               }}
+                style={{ borderRadius: "20px"}}
                 color={"white"} background={'rgb(52,53,65)'} onClick={onOpen}>Create a post</Button>
             </Stack>
             <CustomModal
