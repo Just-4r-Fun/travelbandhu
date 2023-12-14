@@ -2,13 +2,26 @@ import Search from "@/assets/svg/Search";
 import { handleAskBundhuSearchSubmit } from "@/utils";
 import { Button } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { useRouter } from "next/router";
+import { useAppDispatch } from "@/redux/hooks";
+import { setTripPlanDetails } from "@/redux/manager/tripPlan";
 
 function SearchPlaceholder({ text = "Ask Bandhu" }) {
   const [searchValue, setSearchValue] = useState("");
+  const dispatch = useAppDispatch();
+
+  const router = useRouter();
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
       handleAskBundhuSearchSubmit(searchValue);
+      dispatch(
+        setTripPlanDetails({
+          tripDescription: searchValue,
+        })
+      );
+
+      router.push("/ask-bandhu");
     }
   };
   return (
@@ -38,7 +51,15 @@ function SearchPlaceholder({ text = "Ask Bandhu" }) {
           background: "var(--primary-color-light)",
         }}
         color={"white"}
-        onClick={() => handleAskBundhuSearchSubmit(searchValue)}
+        onClick={() => {
+          handleAskBundhuSearchSubmit(searchValue);
+          router.push("/ask-bandhu");
+          dispatch(
+            setTripPlanDetails({
+              tripDescription: searchValue,
+            })
+          );
+        }}
       >
         Ask Bandhu
       </Button>
