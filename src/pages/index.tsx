@@ -25,9 +25,6 @@ export default function Home() {
           <SearchPlaceholder />
           <HomePageNavTabs />
           <div className="flex items-center justify-between mt-auto">
-            {/* <span className="text-xl mr-3 font-medium">
-              Our <br /> Happy <br /> Customer
-            </span> */}
             <Image
               src={Testinomial}
               alt="Testinomial"

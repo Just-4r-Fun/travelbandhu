@@ -1,10 +1,12 @@
 import React from "react";
+import { MdOutlinePostAdd } from "react-icons/md";
 import { Button, Stack, Tooltip, useDisclosure } from '@chakra-ui/react'
 import { postsMock } from "@/__mocks__/posts";
 import FeedPost from "@/components/feedPost";
 import CustomModal from "@/components/common/Modal";
 import CreatePost from "@/components/feedPost/createPost";
 import LoyaltyIcon from "@/assets/svg/Loyalty";
+
 
 interface IOwnProps {
   posts: Post[]
@@ -13,7 +15,7 @@ interface IOwnProps {
 const Feeds: React.FC<IOwnProps> = ({ posts = postsMock }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const heading = <div className="font-medium">Create a post</div>
+  const heading = <div className="font-medium flex flex-row gap-x-2 items-center text-lg"><MdOutlinePostAdd />Create a post</div>
 
   const addPost = () => {
     onClose()
