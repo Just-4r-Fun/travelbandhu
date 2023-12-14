@@ -13,24 +13,14 @@ export const ROUTES = [
     route: "/explore",
   },
   {
-    name: "Feed",
+    name: "Feeds",
     icon: Feed,
-    route: "/feed",
+    route: "/feeds",
   },
   {
     name: "Vlogs",
     icon: Vlogs,
     route: "/vlogs",
-  },
-  {
-    name: "Buddy",
-    icon: Buddy,
-    route: "/buddy",
-  },
-  {
-    name: "Routes",
-    icon: Routes,
-    route: "/routes",
   },
   {
     name: "AI Gallery",

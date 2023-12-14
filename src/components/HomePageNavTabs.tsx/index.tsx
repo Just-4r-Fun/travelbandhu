@@ -20,24 +20,14 @@ const routes = [
     route: "/explore",
   },
   {
-    name: "Feed",
+    name: "Feeds",
     icon: Feed,
-    route: "/feed",
-  },
-  {
-    name: "Vlogs",
-    icon: Vlogs,
-    route: "/vlogs",
+    route: "/feeds",
   },
   {
     name: "Buddy",
     icon: Buddy,
     route: "/buddy",
-  },
-  {
-    name: "Routes",
-    icon: Routes,
-    route: "/routes",
   },
   {
     name: "AI Gallery",
