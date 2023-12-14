@@ -11,10 +11,10 @@ function Header() {
     <Container
       width={"100%"}
       display="flex"
-      position="absolute"
-      top={100}
       justifyContent={"space-between"}
       alignItems={"center"}
+      className="w-full min-w-full pt-3"
+      as={"div"}
     >
       <Box display={"flex"} gap={"30px"} width={"217px"}>
         <Logo />

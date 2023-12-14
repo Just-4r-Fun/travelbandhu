@@ -1,6 +1,5 @@
 import Image from "next/image";
 import HomePageIllustration from "@/assets/images/HomePageIllustration.png";
-import Header from "@/components/header/index";
 
 import { Text } from "@chakra-ui/react";
 import SearchPlaceholder from "@/components/SearchPlaceholder";
@@ -9,7 +8,6 @@ export default function Home() {
   return (
     <>
       <div className="flex flex-col w-full h-screen">
-        <Header />
         <Image
           src={HomePageIllustration}
           alt={"HomePage"}

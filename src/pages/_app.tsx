@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+import Header from "@/components/header";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
@@ -17,7 +17,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
       <main
         className={`${inter.className} bg-[#223040] flex items-center align-middle w-full justify-center`}
       >
-        <div className="max-w-[1224px]">
+        <div className="max-w-[1224px] w-full">
           {pathname !== "/" && <Header />}
           <Component router={router} {...pageProps} />
         </div>
