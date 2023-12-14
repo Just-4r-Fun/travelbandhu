@@ -2,13 +2,14 @@
 import React, { useState } from "react";
 import { Flex, Input, Text } from "@chakra-ui/react";
 
-const ChipInputTextArea = () => {
+const ChipInputTextArea = ({onChangeChip}) => {
   const [chips, setChips] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter" && inputValue.trim() !== "") {
       setChips([...chips, inputValue.trim()]);
+      onChangeChip([...chips, inputValue.trim()]);
       setInputValue("");
       event.preventDefault(); // Prevents the default behavior of the Enter key
     }

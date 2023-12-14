@@ -19,8 +19,9 @@ import {
 } from "@chakra-ui/react";
 import SearchPlaces from "./SearchPlaces";
 import GetLocationComponent from "./GetLocationComponent";
-import GetDateComponent from "./GetDateComponent";
 import GetTravellerDetails from "./GetTravellerDetails";
+import { useAppSelector } from "@/redux/hooks";
+import { getTripPlanTripForm } from "@/redux/manager/tripPlan";
 
 const steps = [
   {
@@ -28,7 +29,6 @@ const steps = [
     description: "",
     ChildComponent: GetLocationComponent,
   },
-  { title: "Date & Time", description: "", ChildComponent: GetDateComponent },
   {
     title: "PLEASE TELL ME SOME DETAILS ABOUT YOUR TRIP",
     description: "",
@@ -41,6 +41,8 @@ function TripPlanner() {
     index: 0,
     count: steps.length,
   });
+
+  const planTripForm = useAppSelector(getTripPlanTripForm);
 
   return (
     <div className="w-full">

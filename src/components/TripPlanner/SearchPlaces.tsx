@@ -210,8 +210,7 @@ function SearchPlaces({ text = "Enter Address Manually", onLocationFilled }) {
                     onClick={() => {
                       setLocationSuggestion([]);
                       setSearchValue(placeName);
-
-                      onLocationFilled();
+                      onLocationFilled(placeName);
                     }}
                   >
                     {placeName}

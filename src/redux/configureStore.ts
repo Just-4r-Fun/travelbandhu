@@ -27,6 +27,7 @@ const masterReducer = (state: any, action: any) => {
       ...state,
       ...payload,
       currentSelectedRoute: state.currentSelectedRoute,
+      tripPlanState: state.tripPlanState,
     };
   } else {
     return rootReducer(state, action);

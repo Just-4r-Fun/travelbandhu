@@ -5,10 +5,12 @@ function UserAvatar() {
   return (
     <>
       <Wrap>
-        <WrapItem>
+        <WrapItem className="cursor-pointer">
           <Avatar
             name={"Kola Tioluwani"}
             src="https://bit.ly/tioluwani-kolawole"
+            height={8}
+            width={8}
           />
         </WrapItem>
       </Wrap>

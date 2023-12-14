@@ -1,62 +1,85 @@
 import BaseLayout from "@/components/BaseLayout";
+import SearchPlaceholder from "@/components/SearchPlaceholder";
 import TripPlanner from "@/components/TripPlanner/TripPlanner";
+import { useAppSelector } from "@/redux/hooks";
+import { getTripPlanTripDescription } from "@/redux/manager/tripPlan";
 import {
   Box,
   Button,
   ButtonGroup,
   Card,
   CardBody,
+  Spinner,
   Text,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function AskBandu() {
+  const planTripDescription = useAppSelector(getTripPlanTripDescription);
+  const [firstResponse, setFirstResponse] = React.useState({});
+
+
+  const APICall = async () => {
+    fetch('/api/chatbuddy-1', {
+      method: 'POST',
+      headers: {
+        Accept: 'application.json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ summary: planTripDescription})
+    }).then((res) => res.json()).then((data)=> {
+      const innerHTML = data.res.map((ele, index: number) => {
+        return <div key={index}>
+          <Text pt="3" fontSize={"medium"} fontWeight={500}>{ele.name}</Text>
+          <Text pt="2" fontSize={"medium"}>{ele.description}</Text>
+        </div>
+      })
+      setFirstResponse(innerHTML);
+    })
+  }
+
+
+  useEffect(() => {
+    APICall();
+  }, [])
+
+  const [enableEditTripDescription, setEnableEditTripDescription] =
+    useState(false);
+
   return (
     <BaseLayout className="pt-6">
       <div className="w-full min-h-fit">
         <div className="flex  w-full justify-end">
-          <Card width={"50%"} background="aliceblue">
+          <Card width={"50%"} background="aliceblue" style={{
+            borderRadius: '20px'
+          }}>
             <CardBody>
-              <Text pt="2" fontSize="medium">
-                I want to visit Goa in the month of December, I live in
-                Bengalore, We are a group of 3 people, we want to explore south
-                Goa, suggest me few places near south Goa and help me plan my
-                trip
+              <Text fontSize="medium">
+                {planTripDescription}
               </Text>
             </CardBody>
           </Card>
         </div>
 
         <div className="flex  w-full justify-start pt-4">
-          <Card width={"50%"} background="#F2F2F2">
-            <CardBody>
-              <Text pt="2" fontSize="medium">
-                Beach Bliss: Explore Palolem Beach's serene ambiance. Relax on
-                the pristine sands of Colva Beach Historical Charm: Visit Cabo
-                de Rama fort for panoramic views. Spiritual Sojourn: Immerse in
-                the divine at Shri Manguesh Temple. Cultural Exploration: Marvel
-                at the architecture of Basilica of Bom Jesus. Market Delights:
-                Shop for local treasures at Margao's vibrant markets. Riverside
-                Cruise: Conclude your day with a Sal River cruise. Resort
-                Retreats: Stay at charming resorts for a delightful experience.
-                December Delights: Enjoy Goa's pleasant weather and festive
-                vibe.
-              </Text>
-              <Text pt="2" fontSize="medium">
-                Beach Bliss: Explore Palolem Beach's serene ambiance. Relax on
-                the pristine sands of Colva Beach Historical Charm: Visit Cabo
-                de Rama fort for panoramic views. Spiritual Sojourn: Immerse in
-                the divine at Shri Manguesh Temple. Cultural Exploration: Marvel
-                at the architecture of Basilica of Bom Jesus. Market Delights:
-                Shop for local treasures at Margao's vibrant markets. Riverside
-                Cruise: Conclude your day with a Sal River cruise. Resort
-                Retreats: Stay at charming resorts for a delightful experience.
-                December Delights: Enjoy Goa's pleasant weather and festive
-                vibe.
-              </Text>
+          <Card width={"50%"} height={Object.keys(firstResponse).length > 0 ? "fit-content" : "600px" } background="#F2F2F2" style={{
+            borderRadius: '20px'
+          }}>
+            <CardBody style={{
+              display: Object.keys(firstResponse).length > 0 ? '' : 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              {Object.keys(firstResponse).length > 0 ? <>{firstResponse}</> : <Spinner thickness='4px'  speed='0.65s' emptyColor='gray.200'  color='blue.500' size='xl'/> }
             </CardBody>
           </Card>
         </div>
+
+        {enableEditTripDescription && (
+          <div className="m-4  w-full flex justify-end ml-2">
+            <SearchPlaceholder customSearchValue={planTripDescription} />
+          </div>
+        )}
 
         <div>
           <ButtonGroup spacing="6" className="w-full mt-12 flex justify-center">
@@ -74,7 +97,14 @@ function AskBandu() {
               {" "}
               Plan your itinerary
             </Button>
-            <Button variant={"outline"} color="#223040" borderRadius="20px">
+            <Button
+              variant={"outline"}
+              color="#223040"
+              borderRadius="20px"
+              onClick={() => {
+                setEnableEditTripDescription(true);
+              }}
+            >
               Continue to Chat
             </Button>
           </ButtonGroup>
