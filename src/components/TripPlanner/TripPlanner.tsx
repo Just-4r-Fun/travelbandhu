@@ -20,6 +20,7 @@ import {
 import SearchPlaces from "./SearchPlaces";
 import GetLocationComponent from "./GetLocationComponent";
 import GetDateComponent from "./GetDateComponent";
+import GetTravellerDetails from "./GetTravellerDetails";
 
 const steps = [
   {
@@ -27,10 +28,11 @@ const steps = [
     description: "",
     ChildComponent: GetLocationComponent,
   },
-  { title: "Date & Time", description: "",   ChildComponent:  GetDateComponent },
+  { title: "Date & Time", description: "", ChildComponent: GetDateComponent },
   {
     title: "PLEASE TELL ME SOME DETAILS ABOUT YOUR TRIP",
     description: "",
+    ChildComponent: GetTravellerDetails,
   },
 ];
 
@@ -52,9 +54,9 @@ function TripPlanner() {
         {steps.map((step, index) => {
           const { ChildComponent } = step;
 
-          const onCompleted = ()=>{
-            setActiveStep(activeStep+1);
-          }
+          const onCompleted = () => {
+            setActiveStep(activeStep + 1);
+          };
 
           return (
             <Step key={index}>

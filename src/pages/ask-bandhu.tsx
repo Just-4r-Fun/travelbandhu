@@ -80,7 +80,7 @@ function AskBandu() {
           </ButtonGroup>
         </div>
 
-        <div id="trip-planner" className="pt-20">
+        <div id="trip-planner" className="pt-20 h-fit bg-white">
           <TripPlanner />
         </div>
       </div>
