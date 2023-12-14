@@ -9,35 +9,25 @@ import Vlogs from "@/assets/svg/Vlogs";
 import Link from "next/link";
 
 const routes = [
-  {
-    name: "Ask Bandhu",
-    icon: Bandhu,
-    route: "/askbandhu",
-  },
+  // {
+  //   name: "Ask Bandhu",
+  //   icon: Bandhu,
+  //   route: "/askbandhu",
+  // },
   {
     name: "Explore",
     icon: Explore,
     route: "/explore",
   },
   {
-    name: "Feed",
+    name: "Feeds",
     icon: Feed,
-    route: "/feed",
-  },
-  {
-    name: "Vlogs",
-    icon: Vlogs,
-    route: "/vlogs",
+    route: "/feeds",
   },
   {
     name: "Buddy",
     icon: Buddy,
     route: "/buddy",
-  },
-  {
-    name: "Routes",
-    icon: Routes,
-    route: "/routes",
   },
   {
     name: "AI Gallery",
