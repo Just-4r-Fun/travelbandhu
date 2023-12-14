@@ -8,9 +8,9 @@ export interface IOwnProps {
 const TextWithChip: React.FC<IOwnProps> = ({title, values}) => {
     return (
         <div className="flex flex-row gap-6 items-center">
-            <div className="text-xs font-medium">{title}</div>
+            <div className="text-s font-medium">{`${title} :`}</div>
             {values.map((value, i) => {
-                return (<Tag> <div className="text-xs cursor-pointer">{value}</div></Tag>)
+                return (<Tag key={`${value}_${i}`} style={{borderRadius: '20px', padding: "5px 10px"}}> <div className="text-s cursor-pointer">{value}</div></Tag>)
             })}
         </div>
     )

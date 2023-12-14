@@ -36,6 +36,7 @@ const Feeds: React.FC<IOwnProps> = ({ posts = postsMock }) => {
                 _hover={{
                   background: "var(--primary-color-light)",
                 }}
+                style={{ borderRadius: "20px" }}
                 color={"white"}
                 background={"rgb(52,53,65)"}
                 onClick={onOpen}
@@ -47,6 +48,7 @@ const Feeds: React.FC<IOwnProps> = ({ posts = postsMock }) => {
               _hover={{
                 background: "var(--primary-color-light)",
               }}
+              style={{ borderRadius: "20px" }}
               color={"white"}
               background={"rgb(52,53,65)"}
               onClick={onOpen}
@@ -74,7 +76,7 @@ const Feeds: React.FC<IOwnProps> = ({ posts = postsMock }) => {
         <div className="flex flex-row gap-4">
           <div>
             {posts.map((post, index) => {
-              return <FeedPost {...post} key={index + "postsfeed"} />;
+              return <FeedPost {...post} />;
             })}
           </div>
         </div>
