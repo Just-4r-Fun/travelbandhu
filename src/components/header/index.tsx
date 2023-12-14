@@ -5,9 +5,13 @@ import { Box, Container, Text } from "@chakra-ui/react";
 import Logo from "@/assets/svg/Logo";
 import UserAvatar from "./UserAvatar";
 import TabLists from "./TabLists";
-
+import { useRouter } from "next/router";
 
 function Header() {
+  const router = useRouter();
+  const handleHomeClick = () => {
+    router.push("/");
+  };
   return (
     <Container
       width={"100%"}
@@ -17,8 +21,14 @@ function Header() {
       className="w-full min-w-full pt-3"
       as={"div"}
     >
-      <Box display={"flex"} gap={"30px"} width={"217px"}>
-        <Logo />
+      <Box
+        display={"flex"}
+        gap={"30px"}
+        width={"217px"}
+        className="cursor-pointer"
+        onClick={handleHomeClick}
+      >
+        <Logo className="cursor-pointer" />
         <Text
           css={{
             color: " #FDFDFD",

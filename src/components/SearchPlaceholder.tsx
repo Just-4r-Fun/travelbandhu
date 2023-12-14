@@ -32,7 +32,7 @@ function SearchPlaceholder({ text = "Ask Bandhu" }) {
         />
       </div>
       <Button
-        className="ml-4"
+        className="ml-4 !rounded-[14px]"
         background={"var(--primary-color)"}
         _hover={{
           background: "var(--primary-color-light)",

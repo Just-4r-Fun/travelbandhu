@@ -9,11 +9,11 @@ import Vlogs from "@/assets/svg/Vlogs";
 import Link from "next/link";
 
 const routes = [
-  {
-    name: "Ask Bandhu",
-    icon: Bandhu,
-    route: "/askbandhu",
-  },
+  // {
+  //   name: "Ask Bandhu",
+  //   icon: Bandhu,
+  //   route: "/askbandhu",
+  // },
   {
     name: "Explore",
     icon: Explore,

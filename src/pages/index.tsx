@@ -24,12 +24,17 @@ export default function Home() {
           </Text>
           <SearchPlaceholder />
           <HomePageNavTabs />
-          <Image
-            src={Testinomial}
-            alt="Testinomial"
-            width={1200}
-            className="mt-auto"
-          />
+          <div className="flex items-center justify-between mt-auto">
+            {/* <span className="text-xl mr-3 font-medium">
+              Our <br /> Happy <br /> Customer
+            </span> */}
+            <Image
+              src={Testinomial}
+              alt="Testinomial"
+              width={1100}
+              className="mt-auto"
+            />
+          </div>
         </div>
       </div>
     </>
