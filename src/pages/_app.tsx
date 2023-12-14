@@ -15,7 +15,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
   return (
     <ChakraProvider>
       <main
-        className={`${inter.className} bg-[#223040] flex items-center align-middle w-full justify-center`}
+        className={`${inter.className} bg-[rgb(52,53,65)] flex items-center align-middle w-full justify-center`}
       >
         <div className="max-w-[1224px] w-full">
           {pathname !== "/" && <Header />}
