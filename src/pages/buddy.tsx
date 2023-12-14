@@ -1,7 +1,7 @@
 import AddBuddyTrip from "@/components/AddBuddyTrip";
 import BaseLayout from "@/components/BaseLayout";
 import BuddyContainer from "@/components/BuddyContainer";
-import { Input } from "@chakra-ui/react";
+
 import React, { useState } from "react";
 
 function Buddy() {
@@ -11,10 +11,17 @@ function Buddy() {
     setShowAddBuddy(!showAddBuddy);
   };
 
+  const handleTripPlan = (tripPlan: any) => {
+    if (showAddBuddy) {
+      toggleAddBuddy();
+    }
+    console.log(tripPlan);
+  };
+
   return (
     <BaseLayout className="min-h-screen !h-fit">
       {showAddBuddy ? (
-        <AddBuddyTrip onBack={toggleAddBuddy} />
+        <AddBuddyTrip onBack={toggleAddBuddy} onTripPlanPost={handleTripPlan} />
       ) : (
         <BuddyContainer onAddBuddy={toggleAddBuddy} />
       )}
