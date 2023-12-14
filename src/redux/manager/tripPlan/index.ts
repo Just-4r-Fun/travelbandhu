@@ -17,8 +17,8 @@ const initialState: {
 };
 
 interface TripPlanPayloadType {
-  tripDescription: string;
-  form: {};
+  tripDescription?: string;
+  form?: {};
 }
 
 export const tripPlanStateSlice = createSlice({
@@ -28,6 +28,8 @@ export const tripPlanStateSlice = createSlice({
     setTripPlanDetails: (state, action: PayloadAction<TripPlanPayloadType>) => {
       const { payload: { tripDescription, form } = {} } = action || {};
 
+      console.log('actiop in redux ', action);
+      
       if (tripDescription) {
         state.tripDescription = tripDescription;
       }

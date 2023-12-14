@@ -9,12 +9,39 @@ import {
   ButtonGroup,
   Card,
   CardBody,
+  Spinner,
   Text,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function AskBandu() {
   const planTripDescription = useAppSelector(getTripPlanTripDescription);
+  const [firstResponse, setFirstResponse] = React.useState({});
+
+
+  const APICall = async () => {
+    fetch('/api/chatbuddy-1', {
+      method: 'POST',
+      headers: {
+        Accept: 'application.json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ summary: planTripDescription})
+    }).then((res) => res.json()).then((data)=> {
+      const innerHTML = data.res.map((ele, index: number) => {
+        return <div key={index}>
+          <Text pt="3" fontSize={"medium"} fontWeight={500}>{ele.name}</Text>
+          <Text pt="2" fontSize={"medium"}>{ele.description}</Text>
+        </div>
+      })
+      setFirstResponse(innerHTML);
+    })
+  }
+
+
+  useEffect(() => {
+    APICall();
+  }, [])
 
   const [enableEditTripDescription, setEnableEditTripDescription] =
     useState(false);
@@ -23,9 +50,11 @@ function AskBandu() {
     <BaseLayout className="pt-6">
       <div className="w-full min-h-fit">
         <div className="flex  w-full justify-end">
-          <Card width={"50%"} background="aliceblue">
+          <Card width={"50%"} background="aliceblue" style={{
+            borderRadius: '20px'
+          }}>
             <CardBody>
-              <Text pt="2" fontSize="medium">
+              <Text fontSize="medium">
                 {planTripDescription}
               </Text>
             </CardBody>
@@ -33,32 +62,15 @@ function AskBandu() {
         </div>
 
         <div className="flex  w-full justify-start pt-4">
-          <Card width={"50%"} background="#F2F2F2">
-            <CardBody>
-              <Text pt="2" fontSize="medium">
-                Beach Bliss: Explore Palolem Beach's serene ambiance. Relax on
-                the pristine sands of Colva Beach Historical Charm: Visit Cabo
-                de Rama fort for panoramic views. Spiritual Sojourn: Immerse in
-                the divine at Shri Manguesh Temple. Cultural Exploration: Marvel
-                at the architecture of Basilica of Bom Jesus. Market Delights:
-                Shop for local treasures at Margao's vibrant markets. Riverside
-                Cruise: Conclude your day with a Sal River cruise. Resort
-                Retreats: Stay at charming resorts for a delightful experience.
-                December Delights: Enjoy Goa's pleasant weather and festive
-                vibe.
-              </Text>
-              <Text pt="2" fontSize="medium">
-                Beach Bliss: Explore Palolem Beach's serene ambiance. Relax on
-                the pristine sands of Colva Beach Historical Charm: Visit Cabo
-                de Rama fort for panoramic views. Spiritual Sojourn: Immerse in
-                the divine at Shri Manguesh Temple. Cultural Exploration: Marvel
-                at the architecture of Basilica of Bom Jesus. Market Delights:
-                Shop for local treasures at Margao's vibrant markets. Riverside
-                Cruise: Conclude your day with a Sal River cruise. Resort
-                Retreats: Stay at charming resorts for a delightful experience.
-                December Delights: Enjoy Goa's pleasant weather and festive
-                vibe.
-              </Text>
+          <Card width={"50%"} height={Object.keys(firstResponse).length > 0 ? "fit-content" : "600px" } background="#F2F2F2" style={{
+            borderRadius: '20px'
+          }}>
+            <CardBody style={{
+              display: Object.keys(firstResponse).length > 0 ? '' : 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              {Object.keys(firstResponse).length > 0 ? <>{firstResponse}</> : <Spinner thickness='4px'  speed='0.65s' emptyColor='gray.200'  color='blue.500' size='xl'/> }
             </CardBody>
           </Card>
         </div>
