@@ -12,13 +12,15 @@ const inter = Inter({
 export default function App({ Component, pageProps, router }: AppProps) {
   const { pathname = "" } = router;
 
+  const isHomePage = pathname === "/";
+
   return (
     <ChakraProvider>
       <main
         className={`${inter.className} bg-[#223040] flex items-center align-middle w-full justify-center`}
       >
-        <div className="max-w-[1224px] w-full">
-          {pathname !== "/" && <Header />}
+        <div className={`w-full ${isHomePage ? "" : "max-w-[1224px]"}`}>
+          {!isHomePage && <Header />}
           <Component router={router} {...pageProps} />
         </div>
       </main>

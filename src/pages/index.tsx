@@ -3,6 +3,7 @@ import HomePageIllustration from "@/assets/images/HomePageIllustration.png";
 
 import { Text } from "@chakra-ui/react";
 import SearchPlaceholder from "@/components/SearchPlaceholder";
+import HomePageNavTabs from "@/components/HomePageNavTabs.tsx";
 
 export default function Home() {
   return (
@@ -17,10 +18,11 @@ export default function Home() {
           <Text fontSize={"xxx-large"} fontWeight={500} className="mt-4">
             TRAVEL BANDHU
           </Text>
-          <Text fontSize={"medium"} fontWeight={500} className="mb-4">
+          <Text fontSize={"medium"} fontWeight={500} className="mb-8">
             Turning Travel Dreams into Effortless Realities
           </Text>
           <SearchPlaceholder />
+          <HomePageNavTabs />
         </div>
       </div>
     </>
