@@ -12,7 +12,7 @@ export default function Home() {
         <Image
           src={HomePageIllustration}
           alt={"HomePage"}
-          className="w-full max-h-[320px]"
+          className="w-full max-h-[40vh]"
         />
         <div className="h-full bg-white flex-1 flex items-center flex-col">
           <Text fontSize={"xxx-large"} fontWeight={500} className="mt-4">
