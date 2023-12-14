@@ -1,10 +1,11 @@
 import React from "react";
 
-import { Box, Center, Container, Text } from "@chakra-ui/react";
+import { Box, Container, Text } from "@chakra-ui/react";
 
 import Logo from "@/assets/svg/Logo";
 import UserAvatar from "./UserAvatar";
 import TabLists from "./TabLists";
+
 
 function Header() {
   return (

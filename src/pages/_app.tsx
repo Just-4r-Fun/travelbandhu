@@ -4,12 +4,13 @@ import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import { Inter } from "next/font/google";
+import { wrapper } from "@/redux/configureStore";
 const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700"],
   preload: true,
 });
-export default function App({ Component, pageProps, router }: AppProps) {
+function App({ Component, pageProps, router }: AppProps) {
   const { pathname = "" } = router;
 
   const isHomePage = pathname === "/";
@@ -31,3 +32,5 @@ export default function App({ Component, pageProps, router }: AppProps) {
     </ChakraProvider>
   );
 }
+
+export default wrapper.withRedux(App);
