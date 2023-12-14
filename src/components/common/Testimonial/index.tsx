@@ -1,6 +1,7 @@
 // Testimonial.js
 import React from 'react';
 import { Box, Text } from '@chakra-ui/react';
+import { FaRegComments } from 'react-icons/fa';
 
 const Testimonial = ({ message }) => {
   return (
@@ -10,9 +11,10 @@ const Testimonial = ({ message }) => {
       borderWidth="1px"
       borderRadius="md"
       maxW="sm"
+      zIndex={1}
     >
       <Text fontSize="small" color="gray.800" textAlign="center">
-        "{message}"
+        {message}
       </Text>
     </Box>
   );
