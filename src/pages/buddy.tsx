@@ -1,11 +1,14 @@
 import AddBuddyTrip from "@/components/AddBuddyTrip";
 import BaseLayout from "@/components/BaseLayout";
 import BuddyContainer from "@/components/BuddyContainer";
+import { useAppDispatch } from "@/redux/hooks";
+import { addMyBuddyTripData } from "@/redux/manager/buddy";
 
 import React, { useState } from "react";
 
 function Buddy() {
   const [showAddBuddy, setShowAddBuddy] = useState(false);
+  const dispatcher = useAppDispatch();
 
   const toggleAddBuddy = () => {
     setShowAddBuddy(!showAddBuddy);
@@ -15,6 +18,7 @@ function Buddy() {
     if (showAddBuddy) {
       toggleAddBuddy();
     }
+    dispatcher(addMyBuddyTripData(tripPlan));
     console.log(tripPlan);
   };
 

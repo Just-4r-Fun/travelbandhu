@@ -3,9 +3,11 @@ import React from "react";
 
 import { buddyTrips } from "@/__mocks__/buddy";
 import TripCard from "./TripCard";
+import { useAppSelector } from "@/redux/hooks";
+import { getCurrentBuddyState } from "@/redux/manager/buddy";
 
 function BuddyContainer({ onAddBuddy }: { onAddBuddy: () => void }) {
-  const { exploreTrips, myTrips } = buddyTrips;
+  const { exploreTrips, myTrips } = useAppSelector(getCurrentBuddyState);
   const { pastTrips, upcomingTrips } = myTrips;
 
   const scrollToMyTrips = () => {
