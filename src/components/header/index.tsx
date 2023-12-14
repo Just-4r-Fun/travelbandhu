@@ -5,8 +5,17 @@ import { Box, Center, Container, Text } from "@chakra-ui/react";
 import Logo from "@/assets/svg/Logo";
 import UserAvatar from "./UserAvatar";
 import TabLists from "./TabLists";
+import { getCurrentSelectedRoute } from "@/redux/manager/currentRoute";
+import { useAppSelector } from "@/redux/hooks";
+import { useRouter } from "next/router";
 
 function Header() {
+  const currentRoute = useAppSelector(getCurrentSelectedRoute);
+
+  const router = useRouter();
+  console.log(" use router ", router );
+
+
   return (
     <Container
       width={"100%"}
@@ -35,7 +44,7 @@ function Header() {
       </Box>
 
       <Box display={"flex"} gap={"80px"}>
-        <TabLists />
+        <TabLists selectedRoute={currentRoute} />
         <UserAvatar />
       </Box>
     </Container>
