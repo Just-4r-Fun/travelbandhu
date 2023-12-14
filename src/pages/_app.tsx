@@ -23,7 +23,7 @@ function App({ Component, pageProps, router }: AppProps) {
         <div
           className={`w-full ${
             isHomePage ? "" : "max-w-[1224px]"
-          } h-screen flex flex-col`}
+          } m-h-screen flex flex-col`}
         >
           {!isHomePage && <Header />}
           <Component router={router} {...pageProps} />

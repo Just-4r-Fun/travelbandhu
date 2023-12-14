@@ -1,21 +1,19 @@
+import BaseLayout from "@/components/BaseLayout";
+import TripPlanner from "@/components/TripPlanner/TripPlanner";
 import {
   Box,
   Button,
   ButtonGroup,
   Card,
   CardBody,
-  CardHeader,
-  Heading,
-  Stack,
-  StackDivider,
   Text,
 } from "@chakra-ui/react";
 import React from "react";
 
 function AskBandu() {
   return (
-    <Card className="p-4 mt-8">
-      <CardBody>
+    <BaseLayout className="pt-6">
+      <div className="w-full min-h-fit">
         <div className="flex  w-full justify-end">
           <Card width={"50%"} background="aliceblue">
             <CardBody>
@@ -61,12 +59,17 @@ function AskBandu() {
         </div>
 
         <div>
-          <ButtonGroup spacing="6" className="mt-12 flex justify-center">
+          <ButtonGroup spacing="6" className="w-full mt-12 flex justify-center">
             <Button
               backgroundColor="#223040"
               variant={"solid"}
               color={"white"}
               borderRadius="20px"
+              onClick={() => {
+                document.getElementById("trip-planner")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
             >
               {" "}
               Plan your itinerary
@@ -76,8 +79,12 @@ function AskBandu() {
             </Button>
           </ButtonGroup>
         </div>
-      </CardBody>
-    </Card>
+
+        <div id="trip-planner" className="pt-20 h-fit bg-white">
+          <TripPlanner />
+        </div>
+      </div>
+    </BaseLayout>
   );
 }
 
