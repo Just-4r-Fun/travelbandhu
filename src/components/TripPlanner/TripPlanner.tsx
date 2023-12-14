@@ -43,7 +43,7 @@ function TripPlanner() {
   });
 
   return (
-    <div className="w-full flex">
+    <div className="w-full">
       <Stepper
         index={activeStep}
         orientation="vertical"
@@ -79,6 +79,19 @@ function TripPlanner() {
           );
         })}
       </Stepper>
+
+      <div className="mt-16">
+        Hooray! Here is what we think you should plan your trip
+      </div>
+
+      <div className="mt-16">
+        Booking buttons
+        <div className="flex gap-4 mt-4">
+          <Button>Book flight tickets</Button>
+          <Button>Book flight tickets</Button>
+          <Button>Book flight tickets</Button>
+        </div>
+      </div>
     </div>
   );
 }
