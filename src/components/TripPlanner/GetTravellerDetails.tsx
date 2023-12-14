@@ -1,13 +1,19 @@
 import {
+  Flex,
   FormControl,
   FormHelperText,
   FormLabel,
   Input,
+  RangeSlider,
+  RangeSliderFilledTrack,
+  RangeSliderThumb,
+  RangeSliderTrack,
   Select,
+  Switch,
   Text,
 } from "@chakra-ui/react";
 import GetDateComponent from "./GetDateComponent";
-import ChipInput from "../common/ChipInput";
+import ChipInputTextArea from "./ChipInputTextArea";
 
 function GetTravellerDetails({ onCompleted }) {
   return (
@@ -64,7 +70,53 @@ function GetTravellerDetails({ onCompleted }) {
         <GetDateComponent />
 
         <FormLabel className="mt-4">Stay Location prefrences</FormLabel>
-        <ChipInput></ChipInput>
+        <ChipInputTextArea></ChipInputTextArea>
+
+        <div className="flex items-center">
+          <FormLabel className="mt-4">Bringing pets along? </FormLabel>
+          <Switch id="email-alerts" />
+        </div>
+
+        <div className="flex items-center">
+          <FormLabel className="mt-4">Commute preference ? </FormLabel>
+          <Select
+            placeholder="commute"
+            style={{ borderRadius: "20px" }}
+            width={400}
+          >
+            <option>flight</option>
+            <option>hotel</option>
+            <option>bus</option>
+          </Select>
+        </div>
+
+        <div className="flex items-center">
+          <FormLabel className="mt-4">Budget preference ? </FormLabel>
+          <Select
+            placeholder="commute"
+            style={{ borderRadius: "20px" }}
+            width={400}
+          >
+            <option>flight</option>
+            <option>hotel</option>
+            <option>bus</option>
+          </Select>
+        </div>
+
+        <div className="flex items-center">
+          <FormLabel className="mt-4">Range preference ? </FormLabel>
+          <RangeSlider
+            aria-label={["min", "max"]}
+            onChangeEnd={(val) => console.log(val)}
+            defaultValue={[1000, 300000]}
+          >
+            <RangeSliderTrack>
+              <RangeSliderFilledTrack />
+            </RangeSliderTrack>
+            <RangeSliderThumb index={0} />
+            <RangeSliderThumb index={1} />
+          </RangeSlider>
+        </div>
       </FormControl>
     </div>
   );
