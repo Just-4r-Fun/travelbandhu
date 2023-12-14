@@ -11,8 +11,9 @@ function AddBuddyTrip({ onBack }: { onBack: () => void }) {
           alt="BackButton"
           onClick={onBack}
           width={34}
-          height={20}
+          height={18}
           className="mr-3"
+          style={{ cursor: "pointer", objectFit: "contain" }}
         />
         <h1 className="text-3xl font-bold">Add Buddy Trip</h1>
       </div>

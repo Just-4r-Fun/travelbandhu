@@ -33,3 +33,6 @@ export const ROUTES = [
     route: "/ask-bandhu",
   },
 ];
+
+const imagePlaceholder =
+  "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.unfe.org%2Fjusticeprotection%2Fsm-placeholder%2F&psig=AOvVaw24km2n5eV0nk7_41D4AiyA&ust=1702646546564000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMjKtOiCj4MDFQAAAAAdAAAAABAD";
