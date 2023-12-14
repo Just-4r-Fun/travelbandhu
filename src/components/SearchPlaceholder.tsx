@@ -3,8 +3,8 @@ import { handleAskBundhuSearchSubmit } from "@/utils";
 import { Button } from "@chakra-ui/react";
 import React, { useState } from "react";
 
-function SearchPlaceholder({ text = "Ask Bandhu" }) {
-  const [searchValue, setSearchValue] = useState("");
+function SearchPlaceholder({ text = "Ask Bandhu", customSearchValue = '' }) {
+  const [searchValue, setSearchValue] = useState(customSearchValue);
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {

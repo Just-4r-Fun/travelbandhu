@@ -1,4 +1,5 @@
 import BaseLayout from "@/components/BaseLayout";
+import SearchPlaceholder from "@/components/SearchPlaceholder";
 import TripPlanner from "@/components/TripPlanner/TripPlanner";
 import { useAppSelector } from "@/redux/hooks";
 import { getTripPlanTripDescription } from "@/redux/manager/tripPlan";
@@ -10,10 +11,13 @@ import {
   CardBody,
   Text,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 
 function AskBandu() {
   const planTripDescription = useAppSelector(getTripPlanTripDescription);
+
+  const [enableEditTripDescription, setEnableEditTripDescription] =
+    useState(false);
 
   return (
     <BaseLayout className="pt-6">
@@ -22,7 +26,7 @@ function AskBandu() {
           <Card width={"50%"} background="aliceblue">
             <CardBody>
               <Text pt="2" fontSize="medium">
-               {planTripDescription}
+                {planTripDescription}
               </Text>
             </CardBody>
           </Card>
@@ -59,6 +63,12 @@ function AskBandu() {
           </Card>
         </div>
 
+        {enableEditTripDescription && (
+          <div className="m-4  w-full flex justify-end ml-2">
+            <SearchPlaceholder customSearchValue={planTripDescription} />
+          </div>
+        )}
+
         <div>
           <ButtonGroup spacing="6" className="w-full mt-12 flex justify-center">
             <Button
@@ -75,7 +85,14 @@ function AskBandu() {
               {" "}
               Plan your itinerary
             </Button>
-            <Button variant={"outline"} color="#223040" borderRadius="20px">
+            <Button
+              variant={"outline"}
+              color="#223040"
+              borderRadius="20px"
+              onClick={() => {
+                setEnableEditTripDescription(true);
+              }}
+            >
               Continue to Chat
             </Button>
           </ButtonGroup>
