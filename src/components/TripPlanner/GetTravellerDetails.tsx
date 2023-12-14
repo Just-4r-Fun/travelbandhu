@@ -10,7 +10,6 @@ import {
   RangeSliderTrack,
   Select,
   Switch,
-  Text,
 } from "@chakra-ui/react";
 import GetDateComponent from "./GetDateComponent";
 import ChipInputTextArea from "./ChipInputTextArea";

@@ -47,7 +47,7 @@ function TripPlanner() {
       <Stepper
         index={activeStep}
         orientation="vertical"
-        height="400px"
+        height="100%"
         gap="0"
         className="m-0"
       >
