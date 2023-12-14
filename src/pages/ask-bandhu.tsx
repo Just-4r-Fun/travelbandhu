@@ -12,7 +12,7 @@ import React from "react";
 
 function AskBandu() {
   return (
-    <BaseLayout>
+    <BaseLayout className="pt-6">
       <div className="flex  w-full justify-end">
         <Card width={"50%"} background="aliceblue">
           <CardBody>
