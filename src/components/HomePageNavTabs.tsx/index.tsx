@@ -10,6 +10,11 @@ import Link from "next/link";
 
 const routes = [
   {
+    name: "Ask Bandhu",
+    icon: Bandhu,
+    route: "/askbandhu",
+  },
+  {
     name: "Explore",
     icon: Explore,
     route: "/explore",
@@ -39,20 +44,15 @@ const routes = [
     icon: Gallery,
     route: "/gallery",
   },
-  {
-    name: "Ask Bandhu",
-    icon: Bandhu,
-    route: "/ask-bandhu",
-  },
 ];
 
 function HomePageNavTabs() {
   return (
-    <div className="flex mt-10">
+    <div className="flex mt-8">
       {routes.map((route, index) => (
         <Link href={route.route} key={route.name + index}>
           <div className="flex justify-center flex-col w-[120px] items-center">
-            <route.icon height={60} width={65} />
+            <route.icon height={45} width={55} />
             <span className="font-medium">{route.name}</span>
           </div>
         </Link>

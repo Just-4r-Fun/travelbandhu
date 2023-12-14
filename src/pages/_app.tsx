@@ -20,7 +20,11 @@ function App({ Component, pageProps, router }: AppProps) {
       <main
         className={`${inter.className} bg-[#223040] flex items-center align-middle w-full justify-center`}
       >
-        <div className={`w-full ${isHomePage ? "" : "max-w-[1224px]"}`}>
+        <div
+          className={`w-full ${
+            isHomePage ? "" : "max-w-[1224px]"
+          } h-screen flex flex-col`}
+        >
           {!isHomePage && <Header />}
           <Component router={router} {...pageProps} />
         </div>
