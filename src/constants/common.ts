@@ -8,9 +8,9 @@ import Vlogs from "@/assets/svg/Vlogs";
 
 export const ROUTES = [
   {
-    name: "Explore",
+    name: "Home",
     icon: Explore,
-    route: "/explore",
+    route: "/",
   },
   {
     name: "Feeds",

@@ -9,7 +9,7 @@ function BaseLayout({
 }) {
   return (
     <div
-      className={`mt-10 h-full flex-1 bg-white rounded-t-3xl flex flex-col p-4 items-center w-full ${className}`}
+      className={`mt-10 flex-1 bg-white rounded-t-3xl flex flex-col p-4 items-center w-full min-h-screen !h-fit ${className}`}
     >
       {children}
     </div>
