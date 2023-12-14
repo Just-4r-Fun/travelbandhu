@@ -5,13 +5,14 @@ const initialState: {
   tripDescription: string;
   form: {
     startingLocation: string;
-
+    bringPets: boolean;
   };
 } = {
   tripDescription:
     "I want to visit Goa in the month of December, I live in Bengalore, We are a group of 3 people, we want to explore south Goa, suggest me few places near south Goa and help me plan my trip",
   form: {
     startingLocation: "",
+    bringPets: false
   },
 };
 

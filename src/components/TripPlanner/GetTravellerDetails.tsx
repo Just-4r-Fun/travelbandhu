@@ -25,6 +25,9 @@ export enum FormKeys {
   ROOMS = "noOfRooms",
   COMMUTE_PREFRENCE = "commutePrefrence",
   LOCATIONS = "locations",
+  BRING_PETS = "bringPets",
+  START_DATE = "startDate",
+  END_DATE = "endDate",
 }
 
 function GetTravellerDetails({ onCompleted }) {
@@ -39,22 +42,35 @@ function GetTravellerDetails({ onCompleted }) {
         break;
       }
 
+      case FormKeys.BRING_PETS: {
+        val = e.target.checked;
+        break;
+      }
+
+      case FormKeys.START_DATE: {
+        val = e.target.value;
+        break;
+      }
+
+      case FormKeys.END_DATE: {
+        val = e.target.value;
+        break;
+      }
+
       default: {
         val = e.target.value;
         break;
       }
     }
 
-    if (val) {
-      dispatch(
-        setTripPlanDetails({
-          form: {
-            ...tripForm,
-            [key]: val,
-          },
-        })
-      );
-    }
+    dispatch(
+      setTripPlanDetails({
+        form: {
+          ...tripForm,
+          [key]: val,
+        },
+      })
+    );
   };
 
   return (
@@ -111,7 +127,7 @@ function GetTravellerDetails({ onCompleted }) {
           <option>7</option>
         </Select>
 
-        <GetDateComponent />
+        <GetDateComponent onChangeHandler={onChangeHandler} />
 
         <FormLabel className="mt-4">Stay Location prefrences</FormLabel>
 
@@ -119,7 +135,11 @@ function GetTravellerDetails({ onCompleted }) {
 
         <div className="flex items-center">
           <FormLabel className="mt-4">Bringing pets along? </FormLabel>
-          <Switch id="email-alerts" />
+          <Switch
+            id="pets-switch"
+            isChecked={tripForm.bringPets}
+            onChange={onChangeHandler(FormKeys.BRING_PETS)}
+          />
         </div>
 
         <div className="flex items-center">
