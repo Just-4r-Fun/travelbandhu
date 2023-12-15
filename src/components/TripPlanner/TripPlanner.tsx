@@ -77,6 +77,13 @@ function TripPlanner({ recommendedPlaces = [] }) {
           );
         });
         setFirstResponse(innerHTML);
+        setTimeout(() => {
+          // scroll to element
+          const element = document.getElementById("my-new-itinerary");
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 500);
       });
   };
 
@@ -109,7 +116,12 @@ function TripPlanner({ recommendedPlaces = [] }) {
               <Box flexShrink="0">
                 <StepTitle>{step.title}</StepTitle>
                 <StepDescription>{step.description}</StepDescription>
-                {ChildComponent && <ChildComponent onCompleted={onCompleted} recommendedPlaces={recommendedPlaces} />}
+                {ChildComponent && (
+                  <ChildComponent
+                    onCompleted={onCompleted}
+                    recommendedPlaces={recommendedPlaces}
+                  />
+                )}
               </Box>
               <StepSeparator />
             </Step>
@@ -134,59 +146,76 @@ function TripPlanner({ recommendedPlaces = [] }) {
           Make my travel plan
         </Button>
       </div>
-      {showBottom ? (
-        <>
-          <div className="flex  w-full justify-start">
-            <Card
-              width={"50%"}
-              height={
-                Object.keys(firstResponse).length > 0 ? "fit-content" : "600px"
-              }
-              background="#F2F2F2"
-              style={{
-                borderRadius: "20px",
-              }}
-            >
-              <CardBody
+      <div id={"my-new-itinerary"}>
+        {showBottom ? (
+          <>
+            <div className="flex  w-full justify-start">
+              <Card
+                width={"50%"}
+                height={
+                  Object.keys(firstResponse).length > 0
+                    ? "fit-content"
+                    : "600px"
+                }
+                background="#F2F2F2"
                 style={{
-                  display: Object.keys(firstResponse).length > 0 ? "" : "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  borderRadius: "20px",
                 }}
               >
-                {Object.keys(firstResponse).length > 0 ? (
-                  <>
-                    <Text> Hooray, here is your travel plan !!!!</Text>
-                    {firstResponse}
-                  </>
-                ) : (
-                  <Spinner
-                    thickness="4px"
-                    speed="0.65s"
-                    emptyColor="gray.200"
-                    color="blue.500"
-                    size="xl"
-                  />
-                )}
-              </CardBody>
-            </Card>
-          </div>
-          <div className="mt-16">
-            Booking buttons
-            <div className="flex gap-4 mt-4">
-              <Button style={{
-                borderRadius: '20px'
-              }}>Book flight tickets</Button>
-              <Button style={{
-                borderRadius: '20px'
-              }}>Book flight tickets</Button>
-              <Button style={{
-                borderRadius: '20px'
-              }}>Book flight tickets</Button>
+                <CardBody
+                  style={{
+                    display:
+                      Object.keys(firstResponse).length > 0 ? "" : "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  {Object.keys(firstResponse).length > 0 ? (
+                    <>
+                      <Text> Hooray, here is your travel plan !!!!</Text>
+                      {firstResponse}
+                    </>
+                  ) : (
+                    <Spinner
+                      thickness="4px"
+                      speed="0.65s"
+                      emptyColor="gray.200"
+                      color="blue.500"
+                      size="xl"
+                    />
+                  )}
+                </CardBody>
+              </Card>
             </div>
-          </div>
-        </>
-      ) : null}
+            <div className="mt-16">
+              Next steps:
+              <div className="flex gap-4 mt-4">
+                <Button
+                  style={{
+                    borderRadius: "20px",
+                  }}
+                >
+                  Book flight tickets
+                </Button>
+                <Button
+                  style={{
+                    borderRadius: "20px",
+                  }}
+                >
+                  Book flight tickets
+                </Button>
+                <Button
+                  style={{
+                    borderRadius: "20px",
+                  }}
+                >
+                  Book flight tickets
+                </Button>
+              </div>
+            </div>
+          </>
+        ) : null}
+      </div>
     </div>
   );
 }
