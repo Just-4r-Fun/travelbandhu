@@ -34,7 +34,7 @@ export enum FormKeys {
   PRICE_RANGE = "priceRange",
 }
 
-function GetTravellerDetails({ onCompleted }) {
+function GetTravellerDetails({ recommendedPlaces = [] }) {
   const dispatch = useAppDispatch();
   const tripForm = useAppSelector(getTripPlanTripForm) || {};
 
@@ -94,16 +94,67 @@ function GetTravellerDetails({ onCompleted }) {
   };
 
   return (
-    <div className="mt-4 flex items-center">
+    <div
+      className="mt-4 flex items-center"
+      style={{
+        width: "1000px",
+      }}
+    >
       <FormControl>
-        <FormLabel>Traveller details</FormLabel>
+        <div
+          style={{
+            backgroundColor: "#efefef",
+            padding: "5px 20px 20px 20px",
+            borderRadius: "15px",
+            margin: "10px 0px",
+          }}
+        >
+          <FormLabel
+            style={{
+              marginTop: "15px",
+            }}
+          >
+            Traveller details
+          </FormLabel>
+          <div className="flex flex-row gap-8 mt-4">
+            <Select
+              placeholder="Number of Adults"
+              style={{ borderRadius: "20px", border: "1px solid #aaa" }}
+              width={400}
+              onChange={onChangeHandler(FormKeys.ADULTS)}
+            >
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+            </Select>
 
-        <div className="flex flex-row gap-8 mt-4">
+            <Select
+              placeholder="Number of Kids"
+              style={{ borderRadius: "20px", border: "1px solid #aaa" }}
+              width={400}
+              onChange={onChangeHandler(FormKeys.CHILD)}
+            >
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+            </Select>
+          </div>
+
+          <FormLabel className="mt-4">Stay details</FormLabel>
+
           <Select
-            placeholder="Number of Adults"
-            style={{ borderRadius: "20px" }}
+            placeholder="Number of Rooms"
+            style={{ borderRadius: "20px", border: "1px solid #aaa" }}
             width={400}
-            onChange={onChangeHandler(FormKeys.ADULTS)}
+            onChange={onChangeHandler(FormKeys.ROOMS)}
           >
             <option>1</option>
             <option>2</option>
@@ -114,45 +165,35 @@ function GetTravellerDetails({ onCompleted }) {
             <option>7</option>
           </Select>
 
-          <Select
-            placeholder="Number of Kids"
-            style={{ borderRadius: "20px" }}
-            width={400}
-            onChange={onChangeHandler(FormKeys.CHILD)}
-          >
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-          </Select>
+          {/* <GetDateComponent onChangeHandler={onChangeHandler} /> */}
         </div>
 
-        <FormLabel className="mt-4">Stay details</FormLabel>
-
-        <Select
-          placeholder="Number of Rooms"
-          style={{ borderRadius: "20px" }}
-          width={400}
-          onChange={onChangeHandler(FormKeys.ROOMS)}
+        <div
+          style={{
+            backgroundColor: "#efefef",
+            padding: "5px 20px 20px 20px",
+            borderRadius: "15px",
+            margin: "10px 0px",
+          }}
         >
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-        </Select>
+          <GetDateComponent onChangeHandler={onChangeHandler} />
+        </div>
 
-        <GetDateComponent onChangeHandler={onChangeHandler} />
+        <div
+          style={{
+            backgroundColor: "#efefef",
+            padding: "5px 20px 20px 20px",
+            borderRadius: "15px",
+            margin: "10px 0px",
+          }}
+        >
+          <FormLabel className="mt-4">Stay Location prefrences</FormLabel>
 
-        <FormLabel className="mt-4">Stay Location prefrences</FormLabel>
-
-        <ChipInputTextArea onChangeChip={onChangeHandler(FormKeys.LOCATIONS)} />
-
+          <ChipInputTextArea
+            onChangeChip={onChangeHandler(FormKeys.LOCATIONS)}
+            initialChipsData={recommendedPlaces}
+          />
+        </div>
         <div className="flex items-center">
           <FormLabel className="mt-4">Bringing pets along? </FormLabel>
           <Switch
@@ -162,17 +203,28 @@ function GetTravellerDetails({ onCompleted }) {
           />
         </div>
 
-        <div className="flex items-center">
-          <FormLabel className="mt-4">Commute preference ? </FormLabel>
+        <div
+          className="flex items-center"
+          style={{
+            backgroundColor: "#efefef",
+            padding: "20px",
+            borderRadius: "15px",
+            margin: "10px 0px",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <FormLabel>Commute preference ? </FormLabel>
           <Select
             placeholder="commute prefrence"
-            style={{ borderRadius: "20px" }}
+            style={{ borderRadius: "20px", border: "1px solid #aaa" }}
             width={400}
             onChange={onChangeHandler(FormKeys.COMMUTE_PREFRENCE)}
           >
-            <option>flight</option>
-            <option>hotel</option>
-            <option>bus</option>
+            <option>cheapest possible option</option>
+            <option>private taxi</option>
+            <option>flight + train</option>
+            <option>train + bus</option>
           </Select>
         </div>
 

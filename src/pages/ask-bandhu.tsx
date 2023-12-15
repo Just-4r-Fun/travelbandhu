@@ -1,8 +1,8 @@
 import BaseLayout from "@/components/BaseLayout";
 import SearchPlaceholder from "@/components/SearchPlaceholder";
 import TripPlanner from "@/components/TripPlanner/TripPlanner";
-import { useAppSelector } from "@/redux/hooks";
-import { getTripPlanTripDescription } from "@/redux/manager/tripPlan";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { getTripPlanTripDescription, setPreSelectedRecommendedPlaces } from "@/redux/manager/tripPlan";
 import {
   Box,
   Button,
@@ -17,8 +17,10 @@ import React, { useState, useEffect } from "react";
 function AskBandu() {
   const planTripDescription = useAppSelector(getTripPlanTripDescription);
   const [firstResponse, setFirstResponse] = React.useState({});
+  const [showTripPlanner, setShowTripPlanner] = React.useState(false);
+  const [recommendedPlaces, setRecommendedPlaces] = React.useState([]);
+  const dispatcher = useAppDispatch();
 
-  const [showTripPlanner, setShowTripPlanner] = useState(false);
 
   const APICall = async () => {
     fetch("/api/chatbuddy-1", {
@@ -27,25 +29,19 @@ function AskBandu() {
         Accept: "application.json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ summary: planTripDescription }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        const innerHTML = data.res.map((ele, index: number) => {
-          return (
-            <div key={index}>
-              <Text pt="3" fontSize={"medium"} fontWeight={500}>
-                {ele.name}
-              </Text>
-              <Text pt="2" fontSize={"medium"}>
-                {ele.description}
-              </Text>
-            </div>
-          );
-        });
-        setFirstResponse(innerHTML);
-      });
-  };
+      body: JSON.stringify({ summary: planTripDescription})
+    }).then((res) => res.json()).then((data)=> {
+      const recommended = data.res.map((place) => place.name)
+      setRecommendedPlaces(recommended);
+      const innerHTML = data.res.map((ele, index: number) => {
+        return <div key={index}>
+          <Text pt="3" fontSize={"medium"} fontWeight={500}>{ele.name}</Text>
+          <Text pt="2" fontSize={"medium"}>{ele.description}</Text>
+        </div>
+      })
+      setFirstResponse(innerHTML);
+      dispatcher(setPreSelectedRecommendedPlaces(recommended))
+    })}
 
   useEffect(() => {
     APICall();
@@ -119,7 +115,6 @@ function AskBandu() {
               borderRadius="20px"
               onClick={() => {
                 setShowTripPlanner(true);
-
                 setTimeout(() => {
                   document.getElementById("trip-planner")?.scrollIntoView({
                     behavior: "smooth",
@@ -145,7 +140,7 @@ function AskBandu() {
 
         {showTripPlanner && (
           <div id="trip-planner" className="pt-20 h-fit bg-white">
-            <TripPlanner />
+            <TripPlanner recommendedPlaces={recommendedPlaces} />
           </div>
         )}
       </div>

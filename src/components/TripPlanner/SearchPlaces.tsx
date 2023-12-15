@@ -157,15 +157,15 @@ function SearchPlaces({ text = "Enter Address Manually", onLocationFilled }) {
       {" "}
       <div className="flex items-center">
         <div
-          className="px-3 py-2 rounded-[28px] border border-gray-400 w-[673px] flex items-center"
+          className="px-3 py-[6px] rounded-[28px] border border-gray-400 w-[673px] flex items-center"
           style={{
             borderRadius: "50px",
             border: "1px solid rgba(0, 0, 0, 0.24)",
             background: "#FFF",
-            boxShadow: " 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+            // boxShadow: " 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
           }}
         >
-          <Search className={"mr-2"} />{" "}
+          <Search className={"mr-2"} />
           <input
             placeholder={text}
             className="w-full outline-none"

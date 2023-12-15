@@ -39,6 +39,12 @@ export const tripPlanStateSlice = createSlice({
         state.form = form;
       }
     },
+    setPreSelectedRecommendedPlaces: (state, action)=> {
+      state.form = {
+        ...state.form,
+        locations: action?.payload || []
+      }
+    }
   },
 });
 
@@ -49,13 +55,14 @@ const getTripPlanTripDescription = (state: RootState) =>
 const getTripPlanTripForm = (state: RootState) => state.tripPlanState.form;
 
 const { reducer, actions } = tripPlanStateSlice;
-const { setTripPlanDetails } = actions || {};
+const { setTripPlanDetails, setPreSelectedRecommendedPlaces } = actions || {};
 
 export {
   setTripPlanDetails,
   getTripPlanDetails,
   getTripPlanTripDescription,
   getTripPlanTripForm,
+  setPreSelectedRecommendedPlaces
 };
 
 export default reducer;

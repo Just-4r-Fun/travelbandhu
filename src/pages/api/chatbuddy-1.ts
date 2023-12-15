@@ -59,6 +59,6 @@ export default async function handler(
                     }`
         const userInput = req.body.summary;
         const response = await makeApiCall(`${userInput}\n\n${prompt}`);
-        res.status(200).json(JSON.parse(response.choices[0].message.content));
+        res.status(200).json(JSON.parse(response.choices?.[0]?.message?.content));
     }
 }
