@@ -19,6 +19,9 @@ import {
   setTripPlanDetails,
 } from "@/redux/manager/tripPlan";
 
+import InputRange from "react-input-range";
+import "react-input-range/lib/css/index.css";
+
 export enum FormKeys {
   ADULTS = "adults",
   CHILD = "child",
@@ -28,6 +31,7 @@ export enum FormKeys {
   BRING_PETS = "bringPets",
   START_DATE = "startDate",
   END_DATE = "endDate",
+  PRICE_RANGE = "priceRange",
 }
 
 function GetTravellerDetails({ recommendedPlaces = [] }) {
@@ -57,20 +61,36 @@ function GetTravellerDetails({ recommendedPlaces = [] }) {
         break;
       }
 
+      case FormKeys.PRICE_RANGE: {
+        dispatch(
+          setTripPlanDetails({
+            form: {
+              ...tripForm,
+              budgetLow: e.min,
+              budgetHigh: e.max,
+            },
+          })
+        );
+
+        break;
+      }
+
       default: {
         val = e.target.value;
         break;
       }
     }
 
-    dispatch(
-      setTripPlanDetails({
-        form: {
-          ...tripForm,
-          [key]: val,
-        },
-      })
-    );
+    if (key !== FormKeys.PRICE_RANGE) {
+      dispatch(
+        setTripPlanDetails({
+          form: {
+            ...tripForm,
+            [key]: val,
+          },
+        })
+      );
+    }
   };
 
   return (
@@ -210,17 +230,13 @@ function GetTravellerDetails({ recommendedPlaces = [] }) {
 
         <div className="flex items-center">
           <FormLabel className="mt-4">Budget preference ? </FormLabel>
-          <RangeSlider
-            aria-label={["min", "max"]}
-            onChangeEnd={(val) => console.log(val)}
-            defaultValue={[1000, 300000]}
-          >
-            <RangeSliderTrack>
-              <RangeSliderFilledTrack />
-            </RangeSliderTrack>
-            <RangeSliderThumb index={0} />
-            <RangeSliderThumb index={1} />
-          </RangeSlider>
+
+          <InputRange
+            maxValue={30000}
+            minValue={1000}
+            value={{ min: tripForm.budgetLow, max: tripForm.budgetHigh }}
+            onChange={onChangeHandler(FormKeys.PRICE_RANGE)}
+          />
         </div>
       </FormControl>
     </div>
