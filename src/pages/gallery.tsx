@@ -6,7 +6,7 @@ function Gallery() {
   return (
     <>
       <BaseLayout>
-        <Text>Comming soon!</Text>
+        <Text>Coming soon!</Text>
       </BaseLayout>
     </>
   );
