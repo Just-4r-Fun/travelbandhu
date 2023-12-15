@@ -1,10 +1,13 @@
 import BaseLayout from "@/components/BaseLayout";
 import React from "react";
+import { Text } from "@chakra-ui/react";
 
 function Gallery() {
   return (
     <>
-      <BaseLayout>Gallery</BaseLayout>
+      <BaseLayout>
+        <Text>Comming soon!</Text>
+      </BaseLayout>
     </>
   );
 }
