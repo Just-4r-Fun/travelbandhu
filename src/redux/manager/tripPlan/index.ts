@@ -11,7 +11,7 @@ const initialState: {
   };
 } = {
   tripDescription:
-    "I want to visit Goa in the month of December, I live in Bengalore, We are a group of 3 people, we want to explore south Goa, suggest me few places near south Goa and help me plan my trip",
+    "I want to visit Goa in the month of December, I live in Bangalore, We are a group of 3 people, we want to explore south Goa, suggest me few places near south Goa and help me plan my trip",
   form: {
     startingLocation: "",
     bringPets: false,
@@ -39,12 +39,12 @@ export const tripPlanStateSlice = createSlice({
         state.form = form;
       }
     },
-    setPreSelectedRecommendedPlaces: (state, action)=> {
+    setPreSelectedRecommendedPlaces: (state, action) => {
       state.form = {
         ...state.form,
-        locations: action?.payload || []
-      }
-    }
+        locations: action?.payload || [],
+      };
+    },
   },
 });
 
@@ -62,7 +62,7 @@ export {
   getTripPlanDetails,
   getTripPlanTripDescription,
   getTripPlanTripForm,
-  setPreSelectedRecommendedPlaces
+  setPreSelectedRecommendedPlaces,
 };
 
 export default reducer;
