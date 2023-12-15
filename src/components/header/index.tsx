@@ -44,7 +44,7 @@ function Header() {
         </Text>
       </Box>
 
-      <Box display={"flex"} gap={"80px"}>
+      <Box display={"flex items-center"} gap={"80px"}>
         <TabLists />
         <UserAvatar />
       </Box>

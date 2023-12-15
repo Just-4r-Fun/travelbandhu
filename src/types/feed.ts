@@ -17,4 +17,5 @@ interface Post {
         twitter: string
     },
     hashtags: string[]
+    ctFeedback?: string
 }

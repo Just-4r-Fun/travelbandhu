@@ -1,10 +1,19 @@
 // ChipInput.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Flex, Input, Text } from "@chakra-ui/react";
 import { MdCancel } from "react-icons/md";
 
 const ChipInputTextArea = ({onChangeChip, initialChipsData = []}) => {
   const [chips, setChips] = useState(initialChipsData);
+
+
+  useEffect(() => {
+    if(chips.length > 0){
+      onChangeChip([...chips]);
+    }
+  }, [])
+  
+
   const [inputValue, setInputValue] = useState("");
 
   const handleKeyDown = (event) => {
@@ -24,9 +33,14 @@ const ChipInputTextArea = ({onChangeChip, initialChipsData = []}) => {
 
   return (
     <div>
+      
       {chips.length > 0 && (
         <>
-          <Flex className="mt-4">
+          <Text style={{
+            fontSize: '12px',
+            fontWeight: 'bold'
+          }}>Recommended: </Text>
+          <Flex className="mt-1">        
             {chips.map((chip, index) => (
               <div
                 key={index}

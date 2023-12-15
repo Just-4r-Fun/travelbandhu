@@ -44,6 +44,7 @@ function SearchPlaceholder({ text = "Ask Bandhu", customSearchValue = '' }) {
           onKeyPress={handleKeyPress}
           style={{
             height: `${10 * searchValue.length/20}px`,
+            minHeight: '25px'
           }}
         />
       </div>

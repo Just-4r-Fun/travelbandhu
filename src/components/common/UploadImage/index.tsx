@@ -1,9 +1,17 @@
 import Upload from "@/assets/svg/Upload";
 import { Container } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const UploadImage = () => {
+interface IOwnProps {
+  setImagesValue: (values: any[]) => void
+}
+
+const UploadImage: React.FC<IOwnProps> = ({setImagesValue}) => {
     const [images, setImages] = useState([]);
+
+    useEffect(() => {
+      setImagesValue(images)
+    }, [images])
 
   const handleImageChange = (e) => {
     const files = e.target.files;
@@ -24,6 +32,7 @@ const UploadImage = () => {
       });
     }
   };
+
     return (
         <Container className="flex flex-col border border-dashed p-4">
                 {images.length > 0 && (

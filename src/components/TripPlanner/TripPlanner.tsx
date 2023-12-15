@@ -22,7 +22,6 @@ import {
 } from "@chakra-ui/react";
 import SearchPlaces from "./SearchPlaces";
 import GetLocationComponent from "./GetLocationComponent";
-import GetDateComponent from "./GetDateComponent";
 import GetTravellerDetails from "./GetTravellerDetails";
 import { useAppSelector } from "@/redux/hooks";
 import { getTripPlanTripForm } from "@/redux/manager/tripPlan";

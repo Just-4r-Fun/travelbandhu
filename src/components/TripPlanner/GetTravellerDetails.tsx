@@ -25,6 +25,9 @@ export enum FormKeys {
   ROOMS = "noOfRooms",
   COMMUTE_PREFRENCE = "commutePrefrence",
   LOCATIONS = "locations",
+  BRING_PETS = "bringPets",
+  START_DATE = "startDate",
+  END_DATE = "endDate",
 }
 
 function GetTravellerDetails({recommendedPlaces = []}) {
@@ -39,26 +42,41 @@ function GetTravellerDetails({recommendedPlaces = []}) {
         break;
       }
 
+      case FormKeys.BRING_PETS: {
+        val = e.target.checked;
+        break;
+      }
+
+      case FormKeys.START_DATE: {
+        val = e.target.value;
+        break;
+      }
+
+      case FormKeys.END_DATE: {
+        val = e.target.value;
+        break;
+      }
+
       default: {
         val = e.target.value;
         break;
       }
     }
 
-    if (val) {
-      dispatch(
-        setTripPlanDetails({
-          form: {
-            ...tripForm,
-            [key]: val,
-          },
-        })
-      );
-    }
+    dispatch(
+      setTripPlanDetails({
+        form: {
+          ...tripForm,
+          [key]: val,
+        },
+      })
+    );
   };
 
   return (
-    <div className="mt-4 flex items-center">
+    <div className="mt-4 flex items-center" style={{
+      width: '1000px'
+    }}>
       <FormControl>
         
 
@@ -119,6 +137,8 @@ function GetTravellerDetails({recommendedPlaces = []}) {
           <option>6</option>
           <option>7</option>
         </Select>
+
+        <GetDateComponent onChangeHandler={onChangeHandler} />
         </div>
 
         <div style={{
@@ -127,7 +147,7 @@ function GetTravellerDetails({recommendedPlaces = []}) {
           borderRadius: '15px',
           margin: "10px 0px"
         }}>
-          <GetDateComponent />
+          <GetDateComponent onChangeHandler={onChangeHandler} />
         </div>
         
 
@@ -137,23 +157,15 @@ function GetTravellerDetails({recommendedPlaces = []}) {
           borderRadius: '15px',
           margin: "10px 0px"
         }}>
-
-
-
         <FormLabel className="mt-4">Stay Location prefrences</FormLabel>
+
         <ChipInputTextArea onChangeChip={onChangeHandler(FormKeys.LOCATIONS)} initialChipsData={recommendedPlaces}/>
-        </div>   
-        
-        <div style={{
-          backgroundColor: "#efefef",
-          padding: '20px',
-          borderRadius: '15px',
-          margin: "10px 0px",
-          display: 'flex',
-          alignItems: 'center',
-        }}>
-          <FormLabel>Bringing pets along? </FormLabel>
-          <Switch id="email-alerts" style={{ marginTop: '-5px'}}/>
+
+        </div>
+
+        <div className="flex items-center">
+          <FormLabel className="mt-4">Bringing pets along? </FormLabel>
+          <Switch id="email-alerts" onChange={onChangeHandler(FormKeys.BRING_PETS)}/>
         </div>
 
         <div className="flex items-center" style={{
