@@ -194,12 +194,10 @@ function TripPlanner({ recommendedPlaces = [] }) {
                   style={{
                     borderRadius: "20px",
                   }}
-                >
-                  Book flight tickets
-                </Button>
-                <Button
-                  style={{
-                    borderRadius: "20px",
+                  onClick={() => {
+                    window.open(
+                      "https://www.cleartrip.com/flights/results?adults=5&childs=3&infants=0&class=Economy&depart_date=20/01/2024&return_date=24/02/2024&from=BLR&to=GOI&intl=n&origin=BLR%20-%20Bangalore,%20IN&destination=GOI%20-%20Goa,%20IN&sft=&sd=1702621363419&rnd_one=R"
+                    );
                   }}
                 >
                   Book flight tickets
@@ -208,8 +206,27 @@ function TripPlanner({ recommendedPlaces = [] }) {
                   style={{
                     borderRadius: "20px",
                   }}
+                  onClick={() => {
+                    window.open(
+                      "https://www.cleartrip.com/bus/results?fromCity=4292&toCity=6578&journeyDate=2023-12-15&fromCityName=Bengaluru&toCityName=Goa"
+                    );
+                  }}
                 >
-                  Book flight tickets
+                  Book hotel tickets
+                </Button>
+                <Button
+                  style={{
+                    borderRadius: "20px",
+                  }}
+                >
+                  Book bus tickets
+                </Button>
+                <Button
+                  style={{
+                    borderRadius: "20px",
+                  }}
+                >
+                  Need a travel buddy?
                 </Button>
               </div>
             </div>
