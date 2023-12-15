@@ -15,11 +15,6 @@ const routes = [
   //   route: "/askbandhu",
   // },
   {
-    name: "Explore",
-    icon: Explore,
-    route: "/explore",
-  },
-  {
     name: "Feeds",
     icon: Feed,
     route: "/feeds",
@@ -33,6 +28,11 @@ const routes = [
     name: "AI Gallery",
     icon: Gallery,
     route: "/gallery",
+  },
+  {
+    name: "Explore",
+    icon: Explore,
+    route: "/explore",
   },
 ];
 
