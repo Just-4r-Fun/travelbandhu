@@ -6,13 +6,17 @@ const initialState: {
   form: {
     startingLocation: string;
     bringPets: boolean;
+    budgetLow: number;
+    budgetHigh: number;
   };
 } = {
   tripDescription:
     "I want to visit Goa in the month of December, I live in Bengalore, We are a group of 3 people, we want to explore south Goa, suggest me few places near south Goa and help me plan my trip",
   form: {
     startingLocation: "",
-    bringPets: false
+    bringPets: false,
+    budgetLow: 1000,
+    budgetHigh: 30000,
   },
 };
 
@@ -27,9 +31,6 @@ export const tripPlanStateSlice = createSlice({
   reducers: {
     setTripPlanDetails: (state, action: PayloadAction<TripPlanPayloadType>) => {
       const { payload: { tripDescription, form } = {} } = action || {};
-
-      console.log('actiop in redux ', action);
-      
       if (tripDescription) {
         state.tripDescription = tripDescription;
       }

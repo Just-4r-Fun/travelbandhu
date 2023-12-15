@@ -86,12 +86,13 @@ function TripPlanner() {
         Hooray! Here is what we think you should plan your trip
       </div>
 
-      <div className="mt-16">
+      <div className="mt-16 mb-12">
         Booking buttons
         <div className="flex gap-4 mt-4">
           <Button>Book flight tickets</Button>
-          <Button>Book flight tickets</Button>
-          <Button>Book flight tickets</Button>
+          <Button>Book hotels</Button>
+          <Button>Book bus</Button>
+          <Button>Publish your trip on buddy</Button>
         </div>
       </div>
     </div>
