@@ -143,7 +143,7 @@ function TripPlanner({ recommendedPlaces = [] }) {
             generatePlan();
           }}
         >
-          Make my travel plan
+          Plan my final itinerary
         </Button>
       </div>
       <div id={"my-new-itinerary"}>
