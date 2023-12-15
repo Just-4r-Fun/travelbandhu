@@ -225,6 +225,9 @@ function TripPlanner({ recommendedPlaces = [] }) {
                   style={{
                     borderRadius: "20px",
                   }}
+                  onClick={() => {
+                    window.open("/buddy");
+                  }}
                 >
                   Need a travel buddy?
                 </Button>
