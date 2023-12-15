@@ -1,9 +1,10 @@
 // ChipInput.js
 import React, { useState } from "react";
 import { Flex, Input, Text } from "@chakra-ui/react";
+import { MdCancel } from "react-icons/md";
 
-const ChipInputTextArea = ({onChangeChip}) => {
-  const [chips, setChips] = useState([]);
+const ChipInputTextArea = ({onChangeChip, initialChipsData = []}) => {
+  const [chips, setChips] = useState(initialChipsData);
   const [inputValue, setInputValue] = useState("");
 
   const handleKeyDown = (event) => {
@@ -25,29 +26,27 @@ const ChipInputTextArea = ({onChangeChip}) => {
     <div>
       {chips.length > 0 && (
         <>
-          <div className="mt-4">
-            <Text>Recommended: </Text>
-          </div>
           <Flex className="mt-4">
             {chips.map((chip, index) => (
               <div
                 key={index}
                 style={{
                   background: "#EDF2F7",
-                  borderRadius: "5px",
-                  padding: "5px",
+                  borderRadius: "20px",
+                  padding: "5px 10px 5px 15px",
                   marginRight: "5px",
                   marginBottom: "5px",
                   display: "flex",
                   alignItems: "center",
+                  border: '1px solid #777777'
                 }}
               >
                 <Text>{chip}</Text>
                 <div
-                  style={{ marginLeft: "5px", cursor: "pointer" }}
+                  style={{ marginLeft: "10px", cursor: "pointer", fontWeight: 'bold' }}
                   onClick={() => handleRemoveChip(index)}
                 >
-                  x
+                  <MdCancel size={20}/>
                 </div>
               </div>
             ))}
@@ -61,14 +60,14 @@ const ChipInputTextArea = ({onChangeChip}) => {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={handleKeyDown}
-          height={100}
           style={{
-            border: "1px solid #EDF2F7",
+            border: "1px solid #aaa",
             outline: "none",
             background: "transparent",
             flexGrow: 1,
             marginRight: "5px",
             marginTop: "4px",
+            borderRadius: '20px'
           }}
         />
       </Flex>

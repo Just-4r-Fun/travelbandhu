@@ -3,8 +3,8 @@ import React from "react";
 function Search(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
-      width="36"
-      height="36"
+      width="25"
+      height="25"
       viewBox="0 0 40 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

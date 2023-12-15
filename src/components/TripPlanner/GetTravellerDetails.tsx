@@ -27,7 +27,7 @@ export enum FormKeys {
   LOCATIONS = "locations",
 }
 
-function GetTravellerDetails({ onCompleted }) {
+function GetTravellerDetails({recommendedPlaces = []}) {
   const dispatch = useAppDispatch();
   const tripForm = useAppSelector(getTripPlanTripForm) || {};
 
@@ -60,12 +60,21 @@ function GetTravellerDetails({ onCompleted }) {
   return (
     <div className="mt-4 flex items-center">
       <FormControl>
-        <FormLabel>Traveller details</FormLabel>
+        
 
+        <div style={{
+          backgroundColor: "#efefef",
+          padding: '5px 20px 20px 20px',
+          borderRadius: '15px',
+          margin: "10px 0px"
+        }}>
+        <FormLabel style={{
+          marginTop: '15px',
+        }}>Traveller details</FormLabel>
         <div className="flex flex-row gap-8 mt-4">
           <Select
             placeholder="Number of Adults"
-            style={{ borderRadius: "20px" }}
+            style={{ borderRadius: "20px", border: '1px solid #aaa' }}
             width={400}
             onChange={onChangeHandler(FormKeys.ADULTS)}
           >
@@ -80,7 +89,7 @@ function GetTravellerDetails({ onCompleted }) {
 
           <Select
             placeholder="Number of Kids"
-            style={{ borderRadius: "20px" }}
+            style={{ borderRadius: "20px", border: '1px solid #aaa' }}
             width={400}
             onChange={onChangeHandler(FormKeys.CHILD)}
           >
@@ -98,7 +107,7 @@ function GetTravellerDetails({ onCompleted }) {
 
         <Select
           placeholder="Number of Rooms"
-          style={{ borderRadius: "20px" }}
+          style={{ borderRadius: "20px", border: '1px solid #aaa' }}
           width={400}
           onChange={onChangeHandler(FormKeys.ROOMS)}
         >
@@ -110,29 +119,62 @@ function GetTravellerDetails({ onCompleted }) {
           <option>6</option>
           <option>7</option>
         </Select>
-
-        <GetDateComponent />
-
-        <FormLabel className="mt-4">Stay Location prefrences</FormLabel>
-
-        <ChipInputTextArea onChangeChip={onChangeHandler(FormKeys.LOCATIONS)} />
-
-        <div className="flex items-center">
-          <FormLabel className="mt-4">Bringing pets along? </FormLabel>
-          <Switch id="email-alerts" />
         </div>
 
-        <div className="flex items-center">
-          <FormLabel className="mt-4">Commute preference ? </FormLabel>
+        <div style={{
+          backgroundColor: "#efefef",
+          padding: '5px 20px 20px 20px',
+          borderRadius: '15px',
+          margin: "10px 0px"
+        }}>
+          <GetDateComponent />
+        </div>
+        
+
+        <div style={{
+          backgroundColor: "#efefef",
+          padding: '5px 20px 20px 20px',
+          borderRadius: '15px',
+          margin: "10px 0px"
+        }}>
+
+
+
+        <FormLabel className="mt-4">Stay Location prefrences</FormLabel>
+        <ChipInputTextArea onChangeChip={onChangeHandler(FormKeys.LOCATIONS)} initialChipsData={recommendedPlaces}/>
+        </div>   
+        
+        <div style={{
+          backgroundColor: "#efefef",
+          padding: '20px',
+          borderRadius: '15px',
+          margin: "10px 0px",
+          display: 'flex',
+          alignItems: 'center',
+        }}>
+          <FormLabel>Bringing pets along? </FormLabel>
+          <Switch id="email-alerts" style={{ marginTop: '-5px'}}/>
+        </div>
+
+        <div className="flex items-center" style={{
+          backgroundColor: "#efefef",
+          padding: '20px',
+          borderRadius: '15px',
+          margin: "10px 0px",
+          display: 'flex',
+          alignItems: 'center',
+        }}>
+          <FormLabel>Commute preference ? </FormLabel>
           <Select
             placeholder="commute prefrence"
-            style={{ borderRadius: "20px" }}
+            style={{ borderRadius: "20px", border: '1px solid #aaa' }}
             width={400}
             onChange={onChangeHandler(FormKeys.COMMUTE_PREFRENCE)}
           >
-            <option>flight</option>
-            <option>hotel</option>
-            <option>bus</option>
+            <option>cheapest possible option</option>
+            <option>private taxi</option>
+            <option>flight + train</option>
+            <option>train + bus</option>
           </Select>
         </div>
 

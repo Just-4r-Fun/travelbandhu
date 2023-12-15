@@ -17,6 +17,8 @@ import React, { useState, useEffect } from "react";
 function AskBandu() {
   const planTripDescription = useAppSelector(getTripPlanTripDescription);
   const [firstResponse, setFirstResponse] = React.useState({});
+  const [showTripPlanner, setShowTripPlanner] = React.useState(false);
+  const [recommendedPlaces, setRecommendedPlaces] = React.useState([]);
 
 
   const APICall = async () => {
@@ -28,6 +30,7 @@ function AskBandu() {
       },
       body: JSON.stringify({ summary: planTripDescription})
     }).then((res) => res.json()).then((data)=> {
+      setRecommendedPlaces(data.res.map((place) => place.name));
       const innerHTML = data.res.map((ele, index: number) => {
         return <div key={index}>
           <Text pt="3" fontSize={"medium"} fontWeight={500}>{ele.name}</Text>
@@ -89,9 +92,12 @@ function AskBandu() {
               color={"white"}
               borderRadius="20px"
               onClick={() => {
-                document.getElementById("trip-planner")?.scrollIntoView({
-                  behavior: "smooth",
-                });
+                setShowTripPlanner(true);
+                setTimeout(() => {
+                  document.getElementById("trip-planner")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }, 1000);
               }}
             >
               {" "}
@@ -110,9 +116,9 @@ function AskBandu() {
           </ButtonGroup>
         </div>
 
-        <div id="trip-planner" className="pt-20 h-fit bg-white">
-          <TripPlanner />
-        </div>
+        {showTripPlanner ? <div id="trip-planner" className="pt-20 h-fit bg-white">
+          <TripPlanner recommendedPlaces={recommendedPlaces}/>
+        </div> : null }
       </div>
     </BaseLayout>
   );
