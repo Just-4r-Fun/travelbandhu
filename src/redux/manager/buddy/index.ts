@@ -9,7 +9,10 @@ export const currentSelectedRouteSlice = createSlice({
   initialState,
   reducers: {
     addMyBuddyTripData: (state, action) => {
-      state.myTrips.upcomingTrips.push(action.payload);
+      state.myTrips.upcomingTrips = [
+        action.payload,
+        ...state.myTrips.upcomingTrips,
+      ];
     },
   },
 });

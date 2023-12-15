@@ -20,13 +20,14 @@ function AskBandu() {
   const [showTripPlanner, setShowTripPlanner] = React.useState(false);
   const [recommendedPlaces, setRecommendedPlaces] = React.useState([]);
 
+  const [showTripPlanner, setShowTripPlanner] = useState(false);
 
   const APICall = async () => {
-    fetch('/api/chatbuddy-1', {
-      method: 'POST',
+    fetch("/api/chatbuddy-1", {
+      method: "POST",
       headers: {
-        Accept: 'application.json',
-        'Content-Type': 'application/json'
+        Accept: "application.json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ summary: planTripDescription})
     }).then((res) => res.json()).then((data)=> {
@@ -39,12 +40,27 @@ function AskBandu() {
       })
       setFirstResponse(innerHTML);
     })
-  }
-
+      .then((res) => res.json())
+      .then((data) => {
+        const innerHTML = data.res.map((ele, index: number) => {
+          return (
+            <div key={index}>
+              <Text pt="3" fontSize={"medium"} fontWeight={500}>
+                {ele.name}
+              </Text>
+              <Text pt="2" fontSize={"medium"}>
+                {ele.description}
+              </Text>
+            </div>
+          );
+        });
+        setFirstResponse(innerHTML);
+      });
+  };
 
   useEffect(() => {
     APICall();
-  }, [])
+  }, []);
 
   const [enableEditTripDescription, setEnableEditTripDescription] =
     useState(false);
@@ -53,27 +69,48 @@ function AskBandu() {
     <BaseLayout className="pt-6">
       <div className="w-full min-h-fit">
         <div className="flex  w-full justify-end">
-          <Card width={"50%"} background="aliceblue" style={{
-            borderRadius: '20px'
-          }}>
+          <Card
+            width={"50%"}
+            background="aliceblue"
+            style={{
+              borderRadius: "20px",
+            }}
+          >
             <CardBody>
-              <Text fontSize="medium">
-                {planTripDescription}
-              </Text>
+              <Text fontSize="medium">{planTripDescription}</Text>
             </CardBody>
           </Card>
         </div>
 
         <div className="flex  w-full justify-start pt-4">
-          <Card width={"50%"} height={Object.keys(firstResponse).length > 0 ? "fit-content" : "600px" } background="#F2F2F2" style={{
-            borderRadius: '20px'
-          }}>
-            <CardBody style={{
-              display: Object.keys(firstResponse).length > 0 ? '' : 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
-              {Object.keys(firstResponse).length > 0 ? <>{firstResponse}</> : <Spinner thickness='4px'  speed='0.65s' emptyColor='gray.200'  color='blue.500' size='xl'/> }
+          <Card
+            width={"50%"}
+            height={
+              Object.keys(firstResponse).length > 0 ? "fit-content" : "600px"
+            }
+            background="#F2F2F2"
+            style={{
+              borderRadius: "20px",
+            }}
+          >
+            <CardBody
+              style={{
+                display: Object.keys(firstResponse).length > 0 ? "" : "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              {Object.keys(firstResponse).length > 0 ? (
+                <>{firstResponse}</>
+              ) : (
+                <Spinner
+                  thickness="4px"
+                  speed="0.65s"
+                  emptyColor="gray.200"
+                  color="blue.500"
+                  size="xl"
+                />
+              )}
             </CardBody>
           </Card>
         </div>
@@ -97,7 +134,7 @@ function AskBandu() {
                   document.getElementById("trip-planner")?.scrollIntoView({
                     behavior: "smooth",
                   });
-                }, 1000);
+                }, 100);
               }}
             >
               {" "}
@@ -116,9 +153,11 @@ function AskBandu() {
           </ButtonGroup>
         </div>
 
-        {showTripPlanner ? <div id="trip-planner" className="pt-20 h-fit bg-white">
-          <TripPlanner recommendedPlaces={recommendedPlaces}/>
-        </div> : null }
+        {showTripPlanner && (
+          <div id="trip-planner" className="pt-20 h-fit bg-white">
+            <TripPlanner />
+          </div>
+        )}
       </div>
     </BaseLayout>
   );

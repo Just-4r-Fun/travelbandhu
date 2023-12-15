@@ -1,7 +1,7 @@
 import { Input, Text } from "@chakra-ui/react";
 import { FormKeys } from "./GetTravellerDetails";
 
-function GetDateComponent({ onChangeHandler }: {onChangeHandler: any}) {
+function GetDateComponent({ onChangeHandler }) {
   return (
     <div className="mt-4 flex items-center gap-4">
       <Text style={{ fontWeight: "bold" }}>Start:</Text>

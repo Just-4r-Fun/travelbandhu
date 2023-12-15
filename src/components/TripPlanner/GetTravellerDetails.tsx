@@ -161,11 +161,13 @@ function GetTravellerDetails({recommendedPlaces = []}) {
 
         <ChipInputTextArea onChangeChip={onChangeHandler(FormKeys.LOCATIONS)} initialChipsData={recommendedPlaces}/>
 
-        </div>
-
         <div className="flex items-center">
           <FormLabel className="mt-4">Bringing pets along? </FormLabel>
-          <Switch id="email-alerts" onChange={onChangeHandler(FormKeys.BRING_PETS)}/>
+          <Switch
+            id="pets-switch"
+            isChecked={tripForm.bringPets}
+            onChange={onChangeHandler(FormKeys.BRING_PETS)}
+          />
         </div>
 
         <div className="flex items-center" style={{
