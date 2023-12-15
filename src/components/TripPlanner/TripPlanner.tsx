@@ -155,7 +155,10 @@ function TripPlanner({ recommendedPlaces = [] }) {
                 }}
               >
                 {Object.keys(firstResponse).length > 0 ? (
-                  <>{firstResponse}</>
+                  <>
+                    <Text> Hooray, here is your travel plan !!!!</Text>
+                    {firstResponse}
+                  </>
                 ) : (
                   <Spinner
                     thickness="4px"
