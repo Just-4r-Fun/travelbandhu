@@ -120,7 +120,7 @@ function AddBuddyTrip({
           }}
         >
           <input
-            placeholder={"I am planning trip too"}
+            placeholder={"My Destination"}
             className="w-full outline-none"
             value={placeText}
             onChange={(e) => setPlaceText(e.target.value)}
@@ -266,7 +266,7 @@ function AddBuddyTrip({
       </div>
       <div className="flex items-center pt-8">
         <label>
-          Average cost:
+          Average cost per person:
           <Input
             width={200}
             placeholder="Average trip cost"
