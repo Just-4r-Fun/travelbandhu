@@ -6,7 +6,6 @@ import { MdCancel } from "react-icons/md";
 const ChipInputTextArea = ({onChangeChip, initialChipsData = []}) => {
   const [chips, setChips] = useState(initialChipsData);
 
-
   useEffect(() => {
     if(chips.length > 0){
       onChangeChip([...chips]);
@@ -40,7 +39,7 @@ const ChipInputTextArea = ({onChangeChip, initialChipsData = []}) => {
             fontSize: '12px',
             fontWeight: 'bold'
           }}>Recommended: </Text>
-          <Flex className="mt-1">        
+          <Flex className="mt-1 flex-wrap">        
             {chips.map((chip, index) => (
               <div
                 key={index}

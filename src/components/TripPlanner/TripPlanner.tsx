@@ -131,7 +131,7 @@ function TripPlanner({ recommendedPlaces = [] }) {
             generatePlan();
           }}
         >
-          make my travel plan
+          Make my travel plan
         </Button>
       </div>
       {showBottom ? (
